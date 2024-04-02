@@ -28,7 +28,6 @@ const Login = (props) => {
     const userLogin = {
       name: username,
       pass: pass,
-
     }
     console.log(userLogin);
     props.onSaveUserData(userLogin);

@@ -8,9 +8,11 @@ import { Link } from 'react-router-dom';
 export default function LoginPage(props) {
     const loginDataHandler = (loginInfo) => {
         console.log("Login to the page when credentials are entered: " + loginInfo)
-        console.log("Attempt to change page");
+        console.log("Attempt to change page" + loginInfo.name);
+        console.log(loginInfo.pass);
 
         props.onLoginInfoSubmit(loginInfo);
+        
 
     }
     return (
