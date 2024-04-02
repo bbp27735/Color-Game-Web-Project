@@ -18,7 +18,6 @@ export default function Home() {
     console.log(loginInfo);
     console.log("Name: " + loginInfo.name);
 
-
     if(loginInfo.name != '') {
       router.push('/gameplay')
     }
@@ -30,7 +29,7 @@ export default function Home() {
       <div>
 
          <LoginPage onLoginInfoSubmit={loginHandler} />
-
+         <Link href='signup'>Sign Up</Link>
       </div>
     </section>
   );

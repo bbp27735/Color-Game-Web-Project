@@ -1,3 +1,8 @@
 .topBarButtons{
     display:flex;
+
+}
+
+.buttonUse{
+    padding:15px;
 }
