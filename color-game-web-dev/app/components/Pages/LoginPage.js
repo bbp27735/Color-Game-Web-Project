@@ -18,8 +18,9 @@ export default function LoginPage(props) {
     return (
         <div>
             <TopBar />
-            <h1 id="login_welcome">Welcome to Square Game!</h1>            <Login onSaveUserData={loginDataHandler}/>
-            <Link href='signup'>Sign Up</Link>
+            <h1 id="login_welcome">Welcome to Square Game!</h1>            
+            <Login onSaveUserData={loginDataHandler}/>
+            <Link id="link_to_login_signup" href='signup'>Sign Up</Link>
         </div>
     );
   }
