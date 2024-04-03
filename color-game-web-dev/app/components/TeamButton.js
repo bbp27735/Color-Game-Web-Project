@@ -1,12 +1,13 @@
 'use client'
 import TopBar from "./TopBar";
+import React from "react";
+import './TeamButton.css';
 
 
 const TeamButton = () => {
     return (
         <div>
-            <p>Hello World (Team Button)</p>
-
+            <p className="circle">Hello World (Team Button)</p>
         </div>
     );
 }
