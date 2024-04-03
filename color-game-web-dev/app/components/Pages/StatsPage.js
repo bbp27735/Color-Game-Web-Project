@@ -2,7 +2,7 @@
 
 const StatsPage = () => {
     return (
-        <p>Hello World (StatsPage)</p>
+        <p>Hello World!!!!!!!! (StatsPage)</p>
     );
 }
 
