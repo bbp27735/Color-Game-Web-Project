@@ -7,7 +7,7 @@ import GameButton from "../GameButton"
 
 const GamePage = () => {
 
-    const [currentTeam, setCurrentTeam] = useState('red');
+    const [currentTeam, setCurrentTeam] = useState('blue');
 
     const changeTeamBlue = (team) => {
         //  onPick={changeTeamBlue}
