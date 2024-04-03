@@ -1,6 +1,7 @@
 import TopBar from '../TopBar';
 import Login from '../Login';
-
+import Link from 'next/link'
+import './Page.css';
 
 
 
@@ -17,8 +18,8 @@ export default function LoginPage(props) {
     return (
         <div>
             <TopBar />
-            <Login onSaveUserData={loginDataHandler}/>
-            
+            <h1 id="login_welcome">Welcome to Square Game!</h1>            <Login onSaveUserData={loginDataHandler}/>
+            <Link href='signup'>Sign Up</Link>
         </div>
     );
   }
