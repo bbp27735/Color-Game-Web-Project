@@ -7,7 +7,7 @@ import './TeamButton.css';
 const TeamButton = () => {
     return (
         <div>
-            <p className="circle">Hello World (Team Button)</p>
+            <p className="circleBlue">Hello World (Team Button)</p>
         </div>
     );
 }
