@@ -6,7 +6,6 @@ const TeamButton = () => {
     return (
         <div>
             <p>Hello World (Team Button)</p>
-
         </div>
     );
 }
