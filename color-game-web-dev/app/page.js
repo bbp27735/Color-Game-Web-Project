@@ -29,7 +29,6 @@ export default function Home() {
       <div>
 
          <LoginPage onLoginInfoSubmit={loginHandler} />
-         <Link href='signup'>Sign Up</Link>
       </div>
     </section>
   );
