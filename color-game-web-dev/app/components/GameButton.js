@@ -12,7 +12,7 @@ const GameButton = (props) => {
         <div>
 
             <p>{printType}</p>
-
+            
 
 
         </div>
