@@ -1,0 +1,9 @@
+body {
+	background-color: gray;
+	margin: 0;
+}
+
+#login_welcome {
+	text-align: center;
+	font-weight: bold;
+}
