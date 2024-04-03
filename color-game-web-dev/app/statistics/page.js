@@ -10,6 +10,7 @@ export default function Stats() {
   const router = useRouter();
   // then we can use a router where if we recieve working code, we can then..
   // well, move the user to a correct page!
+  //
 
   return (
       <section>
