@@ -6,6 +6,7 @@ import Login from "../components/Login"
 import Topbar from "../components/TopBar"
 import LoginPage from '../components/Pages/LoginPage';
 
+
 export default function LoginLink() {
   // must make a router
   const router = useRouter();
@@ -27,7 +28,7 @@ export default function LoginLink() {
       <div>
 
          <LoginPage onLoginInfoSubmit={loginHandler} />
-         <Link href='signup'>Sign Up</Link>
+         
       </div>
     </section>
   );

@@ -1,8 +1,16 @@
 .topBarButtons{
     display:flex;
-
+    background-color: #4f005f;
 }
-
+.buttonUse{
+    color: white;
+    background-color: #892d9c;
+    border: 1px solid #4f005f;
+}
 .buttonUse{
     padding:15px;
+}
+
+.buttonUse:hover{
+    background-color:#c24cd9;
 }

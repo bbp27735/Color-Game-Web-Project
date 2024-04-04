@@ -1,6 +1,8 @@
 'use client'
 import TopBar from "../TopBar";
 import Login from "../Login";
+import './Page.css';
+import Link from 'next/link'
 
 
 
@@ -10,8 +12,9 @@ const SignUpPage = () => {
     return (
         <div>
             <TopBar />
-            <p>Hello World (SignupPage)</p>
+            <h1 id="login_welcome">Welcome to Square Game!</h1>
             <Login />
+            <Link id="link_to_login_signup" href='login'>Log In</Link>
         </div>
     );
 }

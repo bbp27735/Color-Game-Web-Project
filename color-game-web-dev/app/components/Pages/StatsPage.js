@@ -1,8 +1,11 @@
-
+import TopBar from "../TopBar";
 
 const StatsPage = () => {
     return (
-        <p>Hello World (StatsPage)</p>
+        <div>
+            <TopBar />
+                <h1>Game Statistics</h1>
+        </div>
     );
 }
 

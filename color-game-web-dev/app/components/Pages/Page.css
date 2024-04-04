@@ -1,0 +1,19 @@
+body {
+	background-color: gray;
+	margin: 0;
+}
+
+#login_welcome {
+	text-align: center;
+	font-weight: bold;
+}
+#link_to_login_signup {
+	color: white;
+	display: block;
+  text-align: center;
+}
+
+#button_block {
+	display:flex;
+	align-items: center;
+}

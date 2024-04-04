@@ -1,12 +1,27 @@
 'use client'
+import React, { useState } from 'react';
 import TopBar from "./TopBar";
+import TeamButtonFormat from "./UI/TeamButtonFormat";
+import './TeamButton.css';
 
 
-const TeamButton = () => {
+const TeamButton = (props) => {
+
+    const classStart = 'circle';
+    const teamToUse = props.team;
+    
+    const [classes, setTeam] = useState(classStart + teamToUse);
+
+    const handleClick = () => {
+        const teamToGive = teamToUse;
+        props.changeTeam(teamToGive);
+        console.log("Passed color from TeamButton to handleClick (most likely in GamePage")
+    }
+    
+
     return (
         <div>
-            <p>Hello World (Team Button)</p>
-
+            <TeamButtonFormat team={teamToUse} onClick={handleClick} >Join Team {teamToUse}</TeamButtonFormat>
         </div>
     );
 }

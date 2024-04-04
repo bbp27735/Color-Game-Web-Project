@@ -6,6 +6,9 @@ import Button from "./Button"
 import './TopBar.css'
 
 const TopBar = () => {
+
+    // Need to add a disabler for when the current page is loaded
+
     return(
         <div>
         <header class="topBarButtons">
