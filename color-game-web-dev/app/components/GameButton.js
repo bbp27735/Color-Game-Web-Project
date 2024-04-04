@@ -1,5 +1,6 @@
 'use client'
 import TopBar from "./TopBar";
+import './GameButton.css'
 
 
 const GameButton = (props) => {
@@ -11,8 +12,8 @@ const GameButton = (props) => {
     return (
         <div>
 
-            <p>{printType}</p>
-            
+            <h3>{printType}</h3>
+
 
 
         </div>

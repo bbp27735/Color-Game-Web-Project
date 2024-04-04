@@ -14,7 +14,7 @@ const SignUpPage = () => {
             <TopBar />
             <h1 id="login_welcome">Welcome to Square Game!</h1>
             <Login />
-            <Link id="link_to_login_signup" href='Log In'>Log In</Link>
+            <Link id="link_to_login_signup" href='login'>Log In</Link>
         </div>
     );
 }
