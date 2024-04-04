@@ -10,3 +10,7 @@
 .buttonUse{
     padding:15px;
 }
+
+.buttonUse:hover{
+    background-color:#c24cd9;
+}

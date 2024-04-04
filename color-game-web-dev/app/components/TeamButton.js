@@ -21,7 +21,7 @@ const TeamButton = (props) => {
 
     return (
         <div>
-            <TeamButtonFormat team={teamToUse} onClick={handleClick} >(Team Button) + {classes}</TeamButtonFormat>
+            <TeamButtonFormat team={teamToUse} onClick={handleClick} >Join Team {teamToUse}</TeamButtonFormat>
         </div>
     );
 }

@@ -10,8 +10,9 @@
     font-size: 1.5em; 
     font-weight: bold;
     color: rgb(219, 219, 219); /* Set the text color */
-    padding: 5%; /* Add padding to create space between text and border */
+    padding: 25px; /* Add padding to create space between text and border */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin:25px;
 }
 .circleBlue:hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Change shadow on hover */
@@ -34,6 +35,7 @@
     color: rgb(219, 219, 219); /* Set the text color */
     padding: 5%; /* Add padding to create space between text and border */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    margin:25px;
 }
 
 .circleRed:hover {
