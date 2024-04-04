@@ -12,12 +12,14 @@
     color: rgb(219, 219, 219); /* Set the text color */
     padding: 5%; /* Add padding to create space between text and border */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 .circleBlue:hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Change shadow on hover */
     color: white; 
     transform: scale(1.1); 
     transition: all 0.3s ease; 
+    cursor: pointer;
 }
 
 .circleRed {
@@ -34,6 +36,7 @@
     color: rgb(219, 219, 219); /* Set the text color */
     padding: 5%; /* Add padding to create space between text and border */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .circleRed:hover {
@@ -41,4 +44,5 @@
     color: white; 
     transform: scale(1.1); 
     transition: all 0.3s ease; 
+    cursor: pointer;
 }

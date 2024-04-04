@@ -1,3 +1,25 @@
-h3 {
-    color: white;
+
+.game-button {
+    width: 20vw; /* 20% of the viewport width */
+    height: 20vw; /* 20% of the viewport width */
+    border-radius: 50%; 
+    border: 2px solid black;
+    background-color: white; /* default color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; 
+    font-weight: bold;
+    color: blue; /* Set the text color */
+    padding: 5%; /* Add padding to create space between text and border */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.game-button:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Change shadow on hover */
+    color: rgb(0, 195, 255); 
+    transform: scale(1.1); 
+    transition: all 0.3s ease; 
+    cursor: pointer;
 }

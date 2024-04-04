@@ -39,11 +39,10 @@ const GamePage = () => {
             <TopBar />
             <div id="button_block">
             <TeamButton changeTeam={handleTeamChange} team={blueName}/>
+            <GameButton team={currentTeam}/>
             <TeamButton changeTeam={handleTeamChange} team={redName}/>
             </div>
-            <div>
-            <GameButton team={currentTeam}/>
-            </div>
+
         </div>
     );
 }

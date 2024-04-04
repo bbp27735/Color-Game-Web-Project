@@ -7,13 +7,16 @@ body {
 	text-align: center;
 	font-weight: bold;
 }
+
 #link_to_login_signup {
 	color: white;
 	display: block;
-  text-align: center;
+	text-align: center;
 }
 
 #button_block {
-	display:flex;
+	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
+
