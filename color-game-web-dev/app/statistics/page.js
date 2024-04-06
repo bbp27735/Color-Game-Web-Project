@@ -21,5 +21,4 @@ export default function Stats() {
           </div>  
       </section>
   );
-
 }
