@@ -35,28 +35,46 @@ body {
 	color: blue;
 	text-align: center;
 	list-style-position: inside;
-}
-
-#redTeam {
-	color: red;
-	text-align: center;
-	list-style-position: inside;
-}
-
-#yourStats {
-	text-align: center;
-	font-weight: bold;
-}
-
-.card:hover {
-	box-shadow: 8px 8px 16px 0px black;
-	font-size: larger;
-}
-
-.card {
 	transition: 0.5s;
     width: 50%;
     margin-left: 20px;
     margin-right: 20px;
 	border-radius: 25px;
 }
+
+#blueTeam:hover {
+	box-shadow: 8px 8px 16px 0px black;
+	font-size: larger;
+}
+
+#redTeam {
+	color: red;
+	text-align: center;
+	list-style-position: inside;
+	transition: 0.5s;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+	border-radius: 25px;
+}
+
+#redTeam:hover {
+	box-shadow: 8px 8px 16px 0px black;
+	font-size: larger;
+}
+
+#yourStats {
+	text-align: center;
+	font-weight: bold;
+	transition: 0.5s;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+	border-radius: 25px;
+}
+
+#yourStats:hover {
+	box-shadow: 8px 8px 16px 0px black;
+	font-size: larger;
+}
+
