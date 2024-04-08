@@ -15,8 +15,8 @@ const GameButton = (props) => {
     
     return (
         <div class="game-button">
-            <h3 class>{printType}</h3>
-            <h3 class>{currentRBVal}</h3>
+            <h3 class="game-button-h3" class>{printType}</h3>
+            <h3 class='game-button-h3'>{currentRBVal}</h3>
         </div>
     );
 }

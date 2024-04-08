@@ -8,7 +8,7 @@
     /* we will need to change this once to match the chatter's color */
     .chat-ul li:nth-child(even) {
         background-color: blue; 
-        color: white;
+        color: rgb(255, 255, 255);
     }
 
     .chat-ul li:nth-child(odd) {

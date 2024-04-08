@@ -15,9 +15,9 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
-h3 {
+.game-button-h3{
     font-size: 18px; /* Example font size */
-    color: #333; /* Example color */
+    color: #333333; /* Example color */
   }
 .game-button {
     display: flex;

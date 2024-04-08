@@ -1,37 +1,26 @@
-/* Chatbox form container */
-.chatbox-form {
+.chat-form {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    background-color: #ff0000;
-    border-radius: 5px;
+    align-items: left;
 }
 
-/* Chatbox input field */
-.chatbox-input {
+.chat-form textarea {
+    width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
     margin-bottom: 10px;
+    border: 1px solid #ff6b6b;
+    border-radius: 4px;
 }
 
-/* Chatbox submit button */
-.chatbox-submit {
+.chat-form button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ff0000;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-/* Chatbox submit button hover effect */
-.chatbox-submit:hover {
-    background-color: #0056b3;
-}
-
-/* Chatbox error message */
-.chatbox-error {
-    color: red;
-    margin-top: 5px;
+.chat-form button:hover {
+    background-color: blue;
 }
