@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Chat from './Chat';
 import './ChatList.css';
+import AddChat from "./AddChat"
 
 const ChatBar = (props) => {
 
@@ -14,12 +15,12 @@ const ChatBar = (props) => {
 
     const handleChats = (enteredChatData) => {
         const chatData = {
-        ...enteredUserData,
+        ...enteredChatData,
         id : Math.random().toString(),
       
         }
 
-        if (chatData.name != '' && chatData.message != '') {
+        if (chatData.username != '' && chatData.message != '') {
           setChats([...chats, chatData])
         }  
     }
@@ -32,14 +33,15 @@ const ChatBar = (props) => {
         <div>
             <ul>
                 {chats.map((chat) => 
-                    <Chat name={chat.name} message={chat.message} />
+                    <Chat key={chat.id} username={chat.username} message={chat.message} />
+
                )}
             </ul>
-         
+                <AddChat onSendChat={handleChats}/>
         </div>
     )
 
 
 }
 
-export default chatBar;
+export default ChatBar;

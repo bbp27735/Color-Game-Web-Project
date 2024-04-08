@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import TopBar from "../TopBar";
 import TeamButton from "../TeamButton"
 import GameButton from "../GameButton"
+import ChatBar from "../ChatList"
 import './Page.css'
 
 
@@ -43,6 +44,9 @@ const GamePage = () => {
             </div>
             <div>
             <GameButton team={currentTeam}/>
+            </div>
+            <div>
+                <ChatBar />
             </div>
         </div>
     );
