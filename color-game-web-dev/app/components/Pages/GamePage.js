@@ -6,6 +6,7 @@ import GameButton from "../GameButton"
 import ChatBar from "../ChatList"
 import Score from "../Score"
 import './Page.css'
+import LougoutButton from '../LogoutButton'
 
 
 const GamePage = () => {
@@ -54,6 +55,7 @@ const GamePage = () => {
                 
             
             </div>
+            <LougoutButton />
         </div>
     );
 }
