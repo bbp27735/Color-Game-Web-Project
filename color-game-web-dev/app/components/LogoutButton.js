@@ -4,7 +4,14 @@ import Link from 'next/link'
 import Button from "./Button"
 import './LogoutButton.css'
 
-const LogoutButton = () => {
+const LogoutButton = (props) => {
+    
+    const handleClick = () => {
+        console.log("Logout button clicked")
+        props.isLoggedIn = false;
+    }
+
+
     return (
         <div>
             <header>

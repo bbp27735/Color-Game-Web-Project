@@ -27,7 +27,7 @@ const GamePage = () => {
     
     const blueName = "Blue";
     const redName = "Red";
-
+    const temp = "Login (true/false)"; // This is to track logged in variable
     const handleTeamChange = (teamGiven) => {
         console.log("Recieved color in GamePage:" + teamGiven)
         if (teamGiven == "Blue") {
@@ -53,6 +53,7 @@ const GamePage = () => {
                     <Score></Score>
                 </div>
                 
+                <p>Loggedin? True/False</p>
             
             </div>
             <LougoutButton />

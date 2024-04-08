@@ -28,6 +28,7 @@ const Login = (props) => {
     const userLogin = {
       name: username,
       pass: pass,
+      isLoggedIn: true /* This is a temporary solution to the login issue */
     }
     console.log(userLogin);
     props.onSaveUserData(userLogin);
