@@ -1,0 +1,7 @@
+.chat-div {
+    position: left;
+    background-color: #ccc;
+    border: 3px solid #000;
+    border-radius: 10px; 
+    width: fit-content
+}

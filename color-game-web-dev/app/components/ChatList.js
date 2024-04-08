@@ -31,10 +31,9 @@ const ChatBar = (props) => {
     // need a chat send button
     return (
         <div>
-            <ul>
+            <ul class="chat-ul">
                 {chats.map((chat) => 
                     <Chat key={chat.id} username={chat.username} message={chat.message} />
-
                )}
             </ul>
                 <AddChat onSendChat={handleChats}/>

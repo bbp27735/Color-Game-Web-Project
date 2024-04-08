@@ -13,7 +13,6 @@ const Chat = props => {
         <li className="user-item" key={props.key}>
         <div className="user-info">
             <h3>From: {props.username}</h3>                    
-
             <h3>{props.message}</h3>
         </div>
         </li>
