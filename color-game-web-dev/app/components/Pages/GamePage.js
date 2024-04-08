@@ -44,7 +44,6 @@ const GamePage = () => {
             <TeamButton changeTeam={handleTeamChange} team={redName}/>
             </div>
             <div>
-            <GameButton team={currentTeam}/>
             </div>
             <div>
                 <ChatBar />
