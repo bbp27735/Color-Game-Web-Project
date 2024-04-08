@@ -4,6 +4,7 @@ import TopBar from "../TopBar";
 import TeamButton from "../TeamButton"
 import GameButton from "../GameButton"
 import ChatBar from "../ChatList"
+import Score from "../Score"
 import './Page.css'
 
 
@@ -43,10 +44,15 @@ const GamePage = () => {
             <GameButton team={currentTeam}/>
             <TeamButton changeTeam={handleTeamChange} team={redName}/>
             </div>
-            <div>
-            </div>
-            <div>
-                <ChatBar />
+            <div id="horizontal-stack">
+                <div>
+                  <ChatBar />
+                </div>
+                <div>
+                    <Score></Score>
+                </div>
+                
+            
             </div>
         </div>
     );

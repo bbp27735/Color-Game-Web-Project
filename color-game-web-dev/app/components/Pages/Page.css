@@ -19,7 +19,11 @@ body {
 	align-items: center;
 	justify-content: space-between;
 }
-
+/*CSS for gamepage */
+#horizontal-stack {
+    display: flex; /* Use Flexbox layout */
+		justify-content: space-between;
+}
 /* From here on is CSS code for StatsPage*/
 
 #statsHeader {

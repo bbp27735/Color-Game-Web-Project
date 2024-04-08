@@ -1,0 +1,21 @@
+.Score-card {
+  border: 1px solid #ccc; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  padding: 20px; /* Padding around the content */
+  width: 200px; /* Width of the Score card */
+  background-color: #f9f9f9; /* Background color */
+}
+
+.Score-card p {
+  margin: 0; /* Remove default margin */
+  font-size: 16px; /* Font size of the text */
+  color: #333; /* Text color */
+}
+
+.Score-card p:first-child {
+  margin-top: 0; /* Remove top margin for the first paragraph */
+}
+
+.Score-card p:last-child {
+  margin-bottom: 0; /* Remove bottom margin for the last paragraph */
+}
