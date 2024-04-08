@@ -41,6 +41,7 @@ const AddChat = (props) => {
   return (
     <ChatCard className="input">
       <form onSubmit={submitHandler}>
+        <h1>Team Chat</h1>
         <label>Username</label>
         <input
           id="username"
