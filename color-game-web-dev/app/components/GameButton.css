@@ -15,7 +15,17 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
-
+h3 {
+    font-size: 18px; /* Example font size */
+    color: #333; /* Example color */
+  }
+.game-button {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+}
+.game-button h3 {
+    margin-bottom: 10px; /* Example margin to space out the elements */
+}
 .game-button:hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.3); /* Change shadow on hover */
     color: rgb(0, 195, 255); 
