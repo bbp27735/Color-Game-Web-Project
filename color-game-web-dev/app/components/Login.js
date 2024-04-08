@@ -51,6 +51,7 @@ const Login = (props) => {
         />
         <label>Password</label>
         <input
+          type="password"
           id="age"
           value={pass}
           onChange={handlePass}

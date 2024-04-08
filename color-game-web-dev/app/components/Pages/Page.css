@@ -1,5 +1,5 @@
 body {
-	background-color: gray;
+	background-color: rgb(169, 169, 169);
 	margin: 0;
 }
 
@@ -20,3 +20,28 @@ body {
 	justify-content: space-between;
 }
 
+/* From here on is CSS code for StatsPage*/
+
+#statsHeader {
+	text-align: center;
+	font-size: 50px;
+}
+
+#statBoxes {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 25px;
+}
+
+#blueTeam {
+	color: blue
+}
+
+#redTeam {
+	color: red;
+}
+
+#yourStats {
+	text-align: center;
+	font-weight: bold;
+}

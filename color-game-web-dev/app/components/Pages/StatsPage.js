@@ -1,11 +1,40 @@
 import TopBar from "../TopBar";
+import './Page.css';
 
 const StatsPage = () => {
     return (
-        <div>
+        <section>
             <TopBar />
-                <h1>Game Statistics</h1>
-        </div>
+            <h1 id="statsHeader">Game Statistics</h1>
+            <div id="statBoxes">
+
+                <div id="blueTeam">
+                    <h2>Blue Team:</h2>
+                    <ul>
+                        <li>Player 1: 350 clicks</li>
+                        <li>Player 2: 135 clicks</li>
+                    </ul>
+                </div>
+
+                <div id="yourStats">
+                    <h2>Your Stats:</h2>
+                    <p>
+                       509 total clicks <br/> 
+                       Joined the <font color="red">RED</font> team 20 times <br/>
+                       Joined the <font color="blue">BLUE</font> team 15 times
+                    </p>
+                </div>
+
+                <div id="redTeam">
+                    <h2>Red Team:</h2>
+                        <ul>
+                            <li>Player 3: 1098 clicks</li>
+                            <li>Player 4: 23 clicks</li>
+                        </ul>
+                </div>
+                
+            </div>
+        </section>
     );
 }
 
