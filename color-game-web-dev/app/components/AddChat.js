@@ -10,10 +10,15 @@ const AddChat = (props) => {
 
   const [username, setUsername] = useState('')
   const [message, setMessage] = useState('')
+  const [profilepic, setProfilePic] = useState('')
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
 
+  }
+
+  const handleProfilePic = (event) => {
+    setProfilePic(event.target.value);
   }
 
   const handleMessage = (event) => {
@@ -25,13 +30,18 @@ const AddChat = (props) => {
     event.preventDefault();
     const chatData = {
       username: username,
-      message: message
+      message: message,
+      img: profilepic,
     }
     console.log(chatData);
     props.onSendChat(chatData);
 
     setUsername('')
     setMessage('')
+    setProfilePic('')
+
+
+
   }
 
 
@@ -50,6 +60,12 @@ const AddChat = (props) => {
           id="message"
           value={message}
           onChange={handleMessage}
+        />
+        <label>Profile Picture</label>
+        <input
+          id="profilepic"
+          value={profilepic}
+          onChange={handleProfilePic}
         />
         <Button type="submit">Send</Button>
         

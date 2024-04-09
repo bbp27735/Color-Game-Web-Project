@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Button from "./Button";
 import './LogoutButton.css'
 
 const LogoutButton = (props) => {
@@ -11,12 +12,14 @@ const LogoutButton = (props) => {
     return (
         <div>
             <header>
-                <Link href="/login" className="logout-button" onClick={handleClick}>
-                    Logout
-                </Link>
+            
+                <Button className="logout-button" onClick={handleClick}> Logout </Button>
+
             </header>
         </div>
     );
 };
+
+// <Link class="logout-button" href="/login" className="logout-button">
 
 export default LogoutButton;

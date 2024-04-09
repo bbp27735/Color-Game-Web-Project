@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import './Score.css';
 
-const Score = () => {
+const Score = (props) => {
     // State to keep track of wins for red and blue teams
-    const [redWins, setRedWins] = useState(0);
-    const [blueWins, setBlueWins] = useState(0);
+    // const [redWins, setRedWins] = useState(props.redWin);
+    const [blueWins, setBlueWins] = useState(props.blueWin);
+    const redWins = props.redWin;
 
     return (
         <div className="Score-card">
