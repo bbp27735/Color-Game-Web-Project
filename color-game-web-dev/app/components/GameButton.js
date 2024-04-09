@@ -47,9 +47,10 @@ const GameButton = (props) => {
     
     return (
         <ScoreButton onClick={changeAmount} class="game-button">
-            <h3 class={teamClass}>{printType}</h3>
-            <h3 class='game-button-h3'>{currentRBVal}</h3>
-            <h3 class='game-button-h3'>Get to 255 to win!</h3>
+            <h3 className={teamClass}>{printType}</h3>
+            <h3 className='game-button-h3'>Click here!!</h3>
+            <h3 className='game-button-h3'>{currentRBVal}</h3>
+            <h3 className='game-button-h3'>Get to 255 to win!</h3>
         </ScoreButton>
     );
 }
