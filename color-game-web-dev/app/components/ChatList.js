@@ -51,7 +51,7 @@ const ChatBar = (props) => {
         <div>
             <ul class="chat-ul">
                 {chats.map((chat) => 
-                    <Chat key={chat.id} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
+                    <Chat key={chat.id} img ={chat.img} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
                )}
             </ul>
                 <AddChat onSendChat={handleChats}/>
