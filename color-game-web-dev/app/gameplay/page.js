@@ -18,6 +18,12 @@ export default function Game() {
   const loginHandle = (loginState) => {
     setLoginState(loginState);
     console.log("LoginState in page.js: " + loginState);
+
+    setTimeout(() => {
+      router.push('/login');
+    }, 5000);
+    
+
   }
   if (loginState == true) {
   return (
@@ -35,6 +41,7 @@ export default function Game() {
         <div>
           <TopBar />
           <h1>User is not logged in</h1>
+          <h2>Redirecting to Login page in 5 seconds...</h2>
         </div>
       </section>
     )

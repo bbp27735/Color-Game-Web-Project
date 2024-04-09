@@ -98,9 +98,10 @@ const GamePage = (props) => {
                 </div>
                 <div>
                     <Score blueWin={blueWins} redWin={redWins}></Score>
+                    <LogoutButton onLogout={handleLoginChange} useLogin={isLoggedIn}/>
                 </div>
             </div>
-            <LogoutButton onLogout={handleLoginChange} useLogin={isLoggedIn}/>
+
         </div>
     );
 }

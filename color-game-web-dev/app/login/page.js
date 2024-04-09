@@ -18,6 +18,7 @@ export default function LoginLink() {
     console.log("Name: " + loginInfo.name);
 
     if(loginInfo.name != '') {
+      
       router.push('/gameplay')
     }
 
