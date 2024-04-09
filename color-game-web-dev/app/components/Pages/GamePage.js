@@ -13,11 +13,19 @@ const GamePage = () => {
 
     const [currentTeam, setCurrentTeam] = useState('Blue');
 
+    const [isLoggedIn, setLoggedIn] = useState(true);
+
     const changeTeamBlue = (team) => {
         //  onPick={changeTeamBlue}
         setCurrentTeam('Blue');
     }
     
+    const handleLogout = () => { 
+        console.log("Logout button clicked")
+        setLoggedIn(false);
+    }
+
+
     const changeTeamRed = (team) => {
         //  onPick={changeTeamRed}
 
@@ -27,7 +35,6 @@ const GamePage = () => {
     
     const blueName = "Blue";
     const redName = "Red";
-    const temp = "Login (true/false)"; // This is to track logged in variable
     const handleTeamChange = (teamGiven) => {
         console.log("Recieved color in GamePage:" + teamGiven)
         if (teamGiven == "Blue") {
@@ -52,11 +59,8 @@ const GamePage = () => {
                 <div>
                     <Score></Score>
                 </div>
-                
-                <p>Loggedin? True/False</p>
-            
             </div>
-            <LougoutButton />
+            <LougoutButton isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         </div>
     );
 }
