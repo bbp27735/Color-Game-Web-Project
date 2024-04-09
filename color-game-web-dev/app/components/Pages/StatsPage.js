@@ -8,7 +8,7 @@ const StatsPage = () => {
             <h1 id="statsHeader">Game Statistics</h1>
             <div id="statBoxes">
 
-                <div id="blueTeam">
+                <div id="blueTeam" class="statCard">
                     <h2>Blue Team:</h2>
                     <ul>
                         <li>Player 1: 350 clicks</li>
@@ -16,7 +16,7 @@ const StatsPage = () => {
                     </ul>
                 </div>
 
-                <div id="yourStats">
+                <div id="yourStats" class="statCard">
                     <h2>Your Stats:</h2>
                     <p>
                        509 total clicks <br/> 
@@ -25,11 +25,11 @@ const StatsPage = () => {
                     </p>
                 </div>
 
-                <div id="redTeam">
+                <div id="redTeam" class="statCard">
                     <h2>Red Team:</h2>
                         <ul>
-                            <li>Player 3: 1098 clicks</li>
-                            <li>Player 4: 23 clicks</li>
+                            <li>Player 3: 108 clicks</li>
+                            <li>Player 4: 230 clicks</li>
                         </ul>
                 </div>
                 
