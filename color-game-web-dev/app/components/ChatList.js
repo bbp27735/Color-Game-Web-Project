@@ -38,7 +38,9 @@ const ChatBar = (props) => {
         }  
     }
 
-
+    const handleDeleteChat = (chatID) => {
+        setChats(chats.filter(chat => chat.id !== chatID))
+    }
 
     // might need a key value on the list li
     // need a chat send button
@@ -46,7 +48,7 @@ const ChatBar = (props) => {
         <div>
             <ul class="chat-ul">
                 {chats.map((chat) => 
-                    <Chat key={chat.id} username={chat.username} message={chat.message} img={chat.img} />
+                    <Chat key={chat.id} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
                )}
             </ul>
                 <AddChat onSendChat={handleChats}/>

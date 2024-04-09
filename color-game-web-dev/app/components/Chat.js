@@ -16,6 +16,7 @@ const Chat = props => {
             <img src={props.img} alt="profile pic" width="50"></img>                      
             <h3>{props.message}</h3>
         </div>
+        <button onClick={props.onDelete}>Delete</button>
         </li>
     )
 }

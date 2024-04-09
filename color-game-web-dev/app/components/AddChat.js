@@ -32,9 +32,6 @@ const AddChat = (props) => {
 
     setUsername('')
     setMessage('')
-
-
-
   }
 
 
@@ -55,6 +52,7 @@ const AddChat = (props) => {
           onChange={handleMessage}
         />
         <Button type="submit">Send</Button>
+        
       </form>
     </ChatCard>
   );
