@@ -12,13 +12,19 @@ export default function SignUpLink() {
   // then we can use a router where if we recieve working code, we can then..
   // well, move the user to a correct page!
 
+  const signupHandler = (signupInfo) => {
+    if(signupInfo.name != '') {
+      
+      router.push('/gameplay')
+    }
 
+  }
 
   return (
     <section>
       <div>
 
-         <SignupPage />
+         <SignupPage onSignupInfoSubmit={signupHandler}/>
 
       </div>
     </section>
