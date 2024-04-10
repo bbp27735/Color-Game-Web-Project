@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import TopBar from "../TopBar";
 import TeamButton from "../TeamButton"
 import GameButton from "../GameButton"
-import ChatBar from "../ChatList"
+import ChatList from "../ChatList"
 import Score from "../Score"
 import './Page.css'
 import LogoutButton from '../LogoutButton'
@@ -94,7 +94,7 @@ const GamePage = (props) => {
             </div>
             <div id="horizontal-stack">
                 <div>
-                  <ChatBar />
+                  <ChatList />
                 </div>
                 <div>
                     <Score blueWin={blueWins} redWin={redWins}></Score>

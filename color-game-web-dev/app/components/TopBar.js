@@ -11,10 +11,10 @@ const TopBar = () => {
 
     return(
         <div>
-        <header class="topBarButtons">
-            <Link class="buttonUse" href='/gameplay'>Game Page</Link>
-            <Link class="buttonUse" href='/statistics'>Stats</Link>
-            <Link class="buttonUse" href='/login'>Log In</Link>
+        <header className="topBarButtons">
+            <Link className="buttonUse" href='/gameplay'>Game Page</Link>
+            <Link className="buttonUse" href='/statistics'>Stats</Link>
+            <Link className="buttonUse" href='/login'>Log In</Link>
             <h3>Square Game</h3>
         </header>
         </div>
