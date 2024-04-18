@@ -15,7 +15,7 @@ app.use('/api/users', users);
 app.use('/', router);
 
 
-const conn_str = 'mongodb+srv://bbp27735:8njbLSfBLfuiTooA@userandgame.ldoopoq.mongodb.net/?retryWrites=true&w=majority&appName=UserAndGame';
+const conn_str = 'mongodb+srv://[USERNAME]:[PASSWORD]@userandgame.ldoopoq.mongodb.net/?retryWrites=true&w=majority&appName=UserAndGame';
 mongoose.set('strictQuery', false);
 mongoose.connect(conn_str).then(() => {
     app.listen(port, () => console.log(`Server running on port ${port}`));
