@@ -1,0 +1,70 @@
+body {
+	background-color: rgb(169, 169, 169);
+	margin: 0;
+}
+
+#login_welcome {
+	text-align: center;
+	font-weight: bold;
+}
+
+#link_to_login_signup {
+	color: white;
+	display: block;
+	text-align: center;
+}
+
+#button_block {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+/*CSS for gamepage */
+#horizontal-stack {
+    display: flex; /* Use Flexbox layout */
+		justify-content: space-between;
+}
+/* From here on is CSS code for StatsPage*/
+
+#statsHeader {
+	text-align: center;
+	font-size: 50px;
+}
+
+#statBoxes {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 25px;
+}
+
+#blueTeam {
+	color: blue;
+	text-align: center;
+	list-style-position: inside;
+}
+
+#redTeam {
+	color: red;
+	text-align: center;
+	list-style-position: inside;
+}
+
+#yourStats {
+	text-align: center;
+	font-weight: bold;
+}
+
+.statCard {
+	transition: 0.5s;
+    width: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+	border-radius: 25px;
+	background-color: white;
+}
+
+.statCard:hover {
+	box-shadow: 8px 8px 16px 0px black;
+	font-size: larger;
+}
+

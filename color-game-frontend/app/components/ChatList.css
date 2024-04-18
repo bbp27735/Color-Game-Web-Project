@@ -1,0 +1,32 @@
+    .chat-ul {
+        list-style: none;
+        padding: 0;
+        padding-right: 5px;
+        margin: 0;
+        width: 300px; /* Set the width to fit the content */
+    }
+
+    /* we will need to change this once to match the chatter's color */
+    .chat-ul li:nth-child(even) {
+        background-color: blue; 
+        color: rgb(255, 255, 255);
+    }
+
+    .chat-ul li:nth-child(odd) {
+        background-color: red; 
+        color: white;
+    }
+
+    .chat-ul li {
+        padding: 10px;
+        border-radius: 5px; /* Add this line to round the border */
+        transition: transform 0.3s ease; /* Add transition for smooth animation */
+    }
+
+    .chat-ul li:hover {
+        transform: rotate(5deg); /* Apply rotation on hover */
+    }
+  
+    .chatDiv {
+        display:flex;
+    }
