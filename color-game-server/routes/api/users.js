@@ -1,6 +1,11 @@
 const express = require('express');
-const router = express.Router();
 var bodyParser = require("body-parser");
+const bcryptjs = require("bcryptjs");
+// const userRouter = express.Router();
+const router = express.Router();
+const jwt = require("jsonwebtoken");
+const auth = require("../../middleware/auth");
+
 
 const User = require('../../models/User');
 
@@ -14,6 +19,10 @@ router.put('/', (req, res) => {
     res.json({error: "No ID was supplied. What item should be updated?"})
  });
 
+
+ // IF THE DELETE ROUTE MUST REQUIRE AUTHENTICATION, we can add a second parameter here
+ // Therefore, it will go through the auth before proceeding
+ // In this example, you can't delete a user without passing conditions within the authorization middleware
  router.delete('/:id', (req, res) => {
     User.findByIdAndDelete(req.params.id)
         .then((user) => {res.json({ msg: "Item was deleted successfully."})})
