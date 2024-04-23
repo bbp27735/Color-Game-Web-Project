@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
 
 router.post('/', bodyParser.json(), (req, res) => {
     User.create(req.body)
-    .then((user) => res.json({ msg: 'USer added successfully!'}))
+    .then((user) => res.json({ msg: 'User added successfully!'}))
     .catch((err) => res.status(400).json({ error: 'Unable to add this item' + err}));
 })
 
