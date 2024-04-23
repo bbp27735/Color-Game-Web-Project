@@ -23,7 +23,9 @@ const UserSchema = new mongoose.Schema({
         required: false,
     },
     stats: {
-        type: Stat,
+        numClicks: {
+            type: Number,
+        }
     } 
 })
 

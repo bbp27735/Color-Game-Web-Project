@@ -7,17 +7,17 @@ const mongoose = require('mongoose');
 
 const StatSchema = new mongoose.Schema({
     numClicks: {
-        type: int,
+        type: 'Number',
         required: true,
     },
     blueTeamJoined: {
-        type: int,
+        type: 'Number',
     },
     redTeamJoined: {
-        type: int,
+        type: 'Number',
     },
     chatsSent: {
-        type: int,
+        type: 'Number',
     },
 })
 
