@@ -8,6 +8,9 @@ import './Signup.css';
 
 const Signup = (props) => {
 
+
+  const axios = require('axios');
+
   const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
   const [email, setEmail] = useState('')
@@ -31,15 +34,23 @@ const Signup = (props) => {
     event.preventDefault();
     const userLogin = {
       name: username,
-      pass: pass,
+      password: pass,
       email: email,
     }
     console.log(userLogin);
-    props.onSaveUserData(userLogin);
+    axios
+      .post('http://localhost:8084/api/signup', userLogin)
+      .then((res) => {
+        props.onSaveUserData(userLogin);
 
-    setUsername('')
-    setPass('')
-    setEmail('')
+        setUsername('')
+        setPass('')
+        setEmail('')
+      })
+      .catch((err) => {
+        console.log("Error in CreateItem: " + err)
+      })
+
 
 
 

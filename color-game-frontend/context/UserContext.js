@@ -1,4 +1,3 @@
-import { User } from "discord.js";
 import { createContext, useState, useEffect } from "react";
 
 const UserContext = createContext();
@@ -33,3 +32,5 @@ export const UserProvider = ({ children }) => {
 // to use all of this, there is more to express, and more explained in the
 // Authentication with JWT Handout
 // this helps a lot with setting this all up.
+
+export default UserContext;
