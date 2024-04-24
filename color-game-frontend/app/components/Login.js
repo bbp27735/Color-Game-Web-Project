@@ -1,12 +1,11 @@
 'use client'
-import React, { useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
-import UserContext from '../../context/UserContext';
+import UserContext from '../context/UserContext';
 import { useRouter } from 'next/navigation';
 import Card from './UI/Card';
 import Button from './Button';
 import './Login.css';
-
 
 
 const Login = (props) => {
@@ -23,9 +22,10 @@ const Login = (props) => {
 
   useEffect(() => {
     if (userData.token) {
-      router.push('/gameplay');
+      router.push('/');
     }
   }, [userData.token, router]);
+
 
   const [formData, setFormData] = useState({
     email: '',

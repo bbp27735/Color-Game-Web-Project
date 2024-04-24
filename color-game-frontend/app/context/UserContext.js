@@ -3,13 +3,13 @@ import {createContext, useState, useEffect} from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ({children}) => {
-    const [userData, setUser] = useState({
+    const [userData, setUserData] = useState({
         token: undefined,
-        user: undefined
+        user: undefined,
     });
 
     useEffect(() => {
-        const token = localStorage.getItem("auth-token");
+        const token = localStorage.getItem('auth-token');
         if(token) {
             setUserData(prev => ({
                 ...prev,
@@ -19,7 +19,7 @@ export const UserProvider = ({children}) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{userData, setUserData}}>
+        <UserContext.Provider value={{ userData, setUserData }}>
             {children}
         </UserContext.Provider>
     );
