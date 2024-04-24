@@ -10,6 +10,7 @@ const Signup = (props) => {
 
   const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
+  const [email, setEmail] = useState('')
 
 
   const handleUsername = (event) => {
@@ -21,6 +22,9 @@ const Signup = (props) => {
     setPass(event.target.value);
   }
 
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  }
 
 
   const submitHandler = (event) => {
@@ -28,12 +32,14 @@ const Signup = (props) => {
     const userLogin = {
       name: username,
       pass: pass,
+      email: email,
     }
     console.log(userLogin);
     props.onSaveUserData(userLogin);
 
     setUsername('')
     setPass('')
+    setEmail('')
 
 
 
@@ -43,6 +49,13 @@ const Signup = (props) => {
   return (
     <Card className="input">
       <form onSubmit={submitHandler}>
+        <label>E-Mail</label>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={handleEmail}
+        />
         <label>Username</label>
         <input
           id="username"
@@ -52,10 +65,11 @@ const Signup = (props) => {
         <label>Password</label>
         <input
           type="password"
-          id="age"
+          id="pass"
           value={pass}
           onChange={handlePass}
         />
+
         <Button type="submit">Sign Up</Button>
       </form>
     </Card>
