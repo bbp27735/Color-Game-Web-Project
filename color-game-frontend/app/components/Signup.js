@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Card from './UI/Card';
 import Button from './Button';
 import './Signup.css';
+import axios from 'axios';
+import UserContext from '../context/UserContext';
 
 
 
@@ -15,6 +17,18 @@ const Signup = (props) => {
   const [pass, setPass] = useState('')
   const [email, setEmail] = useState('')
 
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    email: '',
+  });
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
