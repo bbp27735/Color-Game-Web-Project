@@ -12,7 +12,7 @@ const User = require('../../models/User');
 router.put('/:id', bodyParser.json(), (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body)
         .then((user) => res.json({ msg: 'Updated user successfully' }))
-        .catch((err) => res.status(400).jason({ error: 'Unable to update the Databse' }));
+        .catch((err) => res.status(400).json({ error: 'Unable to update the Databse' }));
 });
 
 router.put('/', (req, res) => {

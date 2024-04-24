@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 // we create a file for each model
 
 
-
 const StatSchema = new mongoose.Schema({
     numClicks: {
         type: 'Number',

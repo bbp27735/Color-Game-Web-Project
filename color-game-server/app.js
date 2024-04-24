@@ -10,7 +10,15 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 const users = require('./routes/api/users');
 
+const chats = require('./routes/api/chats');
+
+const stats = require('./routes/api/stats');
+
 app.use('/api/users', users);
+
+app.use('/api/chats', chats);
+
+app.use('/api/stats', stats);
 
 app.use('/', router);
 
