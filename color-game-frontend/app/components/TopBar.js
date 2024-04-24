@@ -15,6 +15,7 @@ const TopBar = () => {
             <Link className="buttonUse" href='/gameplay'>Game Page</Link>
             <Link className="buttonUse" href='/statistics'>Stats</Link>
             <Link className="buttonUse" href='/login'>Log In</Link>
+            <Link className="buttonUse" href='/profilePicture'>Profile Picture</Link>
             <h3>Square Game</h3>
         </header>
         </div>
