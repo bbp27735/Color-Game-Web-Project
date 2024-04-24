@@ -8,12 +8,12 @@ import './Login.css';
 
 const Login = (props) => {
 
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
 
 
-  const handleUsername = (event) => {
-    setUsername(event.target.value);
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
 
   }
 
@@ -26,14 +26,14 @@ const Login = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     const userLogin = {
-      name: username,
+      email: email,
       pass: pass,
       isLoggedIn: true /* This is a temporary solution to the login issue */
     }
     console.log(userLogin);
     props.onSaveUserData(userLogin);
 
-    setUsername('')
+    setEmail('')
     setPass('')
 
 
@@ -44,11 +44,11 @@ const Login = (props) => {
   return (
     <Card className="input">
       <form onSubmit={submitHandler}>
-        <label>Username</label>
+        <label>E-Mail</label>
         <input
-          id="username"
-          value={username}
-          onChange={handleUsername}
+          id="email"
+          value={email}
+          onChange={handleEmail}
         />
         <label>Password</label>
         <input
