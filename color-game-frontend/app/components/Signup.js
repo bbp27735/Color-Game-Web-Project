@@ -7,8 +7,6 @@ import ProfilePicButton from './ProfilePicButton';
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 
-
-
 const Signup = (props) => {
 
   const axios = require('axios');
