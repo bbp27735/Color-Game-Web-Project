@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Card from './UI/Card';
 import Button from './Button';
 import './Signup.css';
@@ -9,7 +9,6 @@ import UserContext from '../context/UserContext';
 
 
 const Signup = (props) => {
-
 
   const axios = require('axios');
 
@@ -64,16 +63,41 @@ const Signup = (props) => {
       .catch((err) => {
         console.log("Error in CreateItem: " + err)
       })
-
-
-
-
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send signup request to the server
+      const signupRes = await axios.post('http://localhost:8084/users/signup', formData);
+      // Send login request to the server
+      const loginRes = await axios.post('http://localhost:8084/login', {
+        email: formData.email,
+        password: formData.password
+      });
+
+      // Update user data upon successful signup
+      setUserData({
+        token: loginRes.data.token,
+        user: loginRes.data.user
+      });
+
+      // Store the authentication token in local storage
+      localStorage.setItem("auth-token", loginRes.data.token);
+
+      // Optionally, you can redirect the user to another page upon successful signup
+      // router.push('/some-path');
+    } catch (error) {
+      console.error("Signup failed:", error);
+      // Handle signup error
+    }
+  };
+
 
 
   return (
     <Card className="input">
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <label>E-Mail</label>
         <input
           type="email"

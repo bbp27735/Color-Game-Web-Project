@@ -1,7 +1,6 @@
 const express = require('express');
 var bodyParser = require("body-parser");
 const bcryptjs = require("bcryptjs");
-const userRouter = express.Router();
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
@@ -60,7 +59,8 @@ router.get('/:id', (req, res) => {
     .catch((err) => res.status(404).json({ noitemfound: "No user found." }));
 });
 
-userRouter.post("/signup", async(req, res) => {
+
+router.post("/signup", bodyParser.json(), async(req, res) => {
     try {
         const { email, password, username } = req.body;
         if (!email || !password || !username) {
@@ -69,7 +69,7 @@ userRouter.post("/signup", async(req, res) => {
         if (password.length < 6) {
             return res.status(400).json({msg: "Password must be more than 6 chars"})
         }
-        const existingUser = await User.findOne({ email });
+        let existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({msg: "User already exists with that email."})
         }
@@ -86,10 +86,10 @@ userRouter.post("/signup", async(req, res) => {
     } catch (err) {
         res.status(500).json({error: err.message})
     }
-})
+});
 
 // Login route
-userRouter.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const {email, password } = req.body;
         if(!email || !password) {
@@ -113,7 +113,7 @@ userRouter.post("/login", async (req, res) => {
 });
 
 // Need the login token valid checker
-userRouter.post("/tokenIsValid", async (req, res) => {
+router.post("/tokenIsValid", async (req, res) => {
     try {
         const token = req.header("Authorization");
         if (!token) return res.json(false);
