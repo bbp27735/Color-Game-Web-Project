@@ -99,6 +99,7 @@ userRouter.post("/signup", bodyParser.json(), async(req, res) => {
 // Login route
 userRouter.post("/login", async (req, res) => {
     try {
+        console.log("Request email: " + req.body.email);
         const {email, password } = req.body;
         console.log("Request body formed into variable.");
         if(!email || !password) {

@@ -103,12 +103,16 @@ const Signup = (props) => {
       // Send signup request to the server
       console.log(formData);
       const signupRes = await axios.post('http://localhost:8084/api/users/signup', formData);
-      console.log("Signup completed. Now need to login.");
+      console.log("Signup completed. Now need to login." + formData.email);
       // Send login request to the server
+      console.log("Email: " + formData.email)
+      /*
       const loginRes = await axios.post('http://localhost:8084/api/users/login', {
          email: formData.email,
          password: formData.password
        });
+       */
+      const loginRest = await axios.post('http://localhost:8084/api/users/login', formData);
        console.log("Login completed. Now to set the user data.");
       
       // Update user data upon successful signup
