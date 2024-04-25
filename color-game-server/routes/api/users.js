@@ -62,8 +62,8 @@ router.get('/:id', (req, res) => {
 
 router.post("/signup", bodyParser.json(), async(req, res) => {
     try {
-        const { email, password, username } = req.body;
-        if (!email || !password || !username) {
+        const { email, password, username, image } = req.body;
+        if (!email || !password || !username || !image) {
             return res.status(400).json({msg: "Please enter all the fields."})
         }
         if (password.length < 6) {
@@ -78,7 +78,7 @@ router.post("/signup", bodyParser.json(), async(req, res) => {
             return res.status(400).json({msg: "User already exists with that username."})
         }
         const hashedPassword = await bcryptjs.hash(password, 8);
-        const newUser = new User({email, password: hashedPassword, username});
+        const newUser = new User({email, password: hashedPassword, username, image});
 
         const savedUser = await newUser.save();
         console.log(savedUser.username);
