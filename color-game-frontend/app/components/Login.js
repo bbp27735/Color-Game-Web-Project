@@ -16,7 +16,7 @@ const Login = (props) => {
   const { userData, setUserData } = useContext(UserContext);
 
   const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
+  const [password, setPass] = useState('')
 
   
 
@@ -28,32 +28,40 @@ const Login = (props) => {
     }
   }, [userData.token, router]);
 
-
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  
 
   const [error, setError] = useState('');
 
   // next need to do handleChange 
 
   const handleChange = (e) => {
+    let itemToChange = e.target.name
+    console.log(itemToChange);
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [formData.itemToChange]: e.target.value,
     });
+    console.log(formData.email);
+    console.log(formData.password);
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(formData);
     try {
       // send login request to the server
       const response = axios.post('http://localhost:8084/api/users/login', formData);
+      console.log(response);
       setUserData({
         token: response.data.token,
         user: response.data.user,
       })
+      console.log("SetUserData ran");
       // Store the authentication in local storage
       localStorage.setItem("auth-token", response.data.token);
       router.push('/gameplay');
@@ -63,10 +71,23 @@ const Login = (props) => {
     }
   }
 
+  
   const handleEmail = (event) => {
     setEmail(event.target.value);
+    
+    console.log(email);
 
   }
+
+  useEffect(() => {
+    console.log("State Updated: ");
+    setEmail(email);
+    setPass(password);
+    setFormData({
+      email: email,
+      password: password
+    })
+  }, [email], [password])
 
   const handlePass = (event) => {
     setPass(event.target.value);
@@ -91,11 +112,7 @@ const Login = (props) => {
 
   }
 
-  if (!userData) {
-    return (
-      <div> <p> Loading... </p></div>
-    )
-  } else {
+  
   return (
     <Card className="input">
       <form onSubmit={handleLogin}>
@@ -108,15 +125,14 @@ const Login = (props) => {
         <label>Password</label>
         <input
           type="password"
-          id="age"
-          value={pass}
+          id="password"
+          value={password}
           onChange={handlePass}
         />
         <Button type="submit">Login</Button>
       </form>
     </Card>
   );
-  }
 };
 
 export default Login;

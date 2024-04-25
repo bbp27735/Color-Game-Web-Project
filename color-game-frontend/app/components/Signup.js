@@ -111,6 +111,8 @@ const Signup = (props) => {
          email: formData.email,
          password: formData.password
        });
+
+       console.log(loginRes);
       
        console.log("Login completed. Now to set the user data.");
       
