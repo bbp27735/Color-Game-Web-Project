@@ -61,12 +61,6 @@ const AddChat = (props) => {
           value={message}
           onChange={handleMessage}
         />
-        <label>Profile Picture</label>
-        <input
-          id="profilepic"
-          value={profilepic}
-          onChange={handleProfilePic}
-        />
         <Button type="submit">Send</Button>
         
       </form>
