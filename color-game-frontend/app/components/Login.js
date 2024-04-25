@@ -56,7 +56,8 @@ const Login = (props) => {
     try {
       // send login request to the server
       const response = axios.post('http://localhost:8084/api/users/login', formData);
-      console.log(response);
+      console.log(response.data);
+      console.log("Starting setUserData");
       setUserData({
         token: response.data.token,
         user: response.data.user,
@@ -66,7 +67,7 @@ const Login = (props) => {
       localStorage.setItem("auth-token", response.data.token);
       router.push('/gameplay');
     } catch (err) {
-      console.log('Login Failed:', error);
+      console.log('Login Failed:', err.message);
       // handle login error
     }
   }
@@ -80,14 +81,24 @@ const Login = (props) => {
   }
 
   useEffect(() => {
-    console.log("State Updated: ");
+    console.log("Email Updated");
     setEmail(email);
     setPass(password);
     setFormData({
       email: email,
-      password: password
+      password: password,
     })
-  }, [email], [password])
+  }, [email])
+
+  useEffect(() => {
+    console.log("Password Updated");
+    setEmail(email);
+    setPass(password);
+    setFormData({
+      email: email,
+      password: password,
+    })
+  }, [password])
 
   const handlePass = (event) => {
     setPass(event.target.value);

@@ -118,12 +118,12 @@ const Signup = (props) => {
       
       // Update user data upon successful signup
       setUserData({
-        token: signupRes.data.token,
-        user: signupRes.data.user
+        token: loginRes.data.token,
+        user: loginRes.data.user
       });
 
       // Store the authentication token in local storage
-      localStorage.setItem("auth-token", signupRes.data.token);
+      localStorage.setItem("auth-token", loginRes.data.token);
       console.log("Auth token stored in local storage. Now changing page.");
 
       // Optionally, you can redirect the user to another page upon successful signup

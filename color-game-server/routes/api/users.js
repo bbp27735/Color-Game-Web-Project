@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 var bodyParser = require("body-parser");
 const bcryptjs = require("bcryptjs");
@@ -34,8 +35,8 @@ userRouter.put('/', (req, res) => {
 // delete code for an auth token
 
 
- userRouter.delete('/:id', auth, (req, res) => {
-    er.findByIdAndDelete(req.params.id, req.body)
+ userRouter.delete('/:id', (req, res) => {
+    User.findByIdAndDelete(req.params.id, req.body)
         .then((user) => {res.json({ msg: "Item was deleted successfully."})})
         .catch((err) => res.status(404).json({ error: "No such item exists."}));
 });
@@ -97,7 +98,7 @@ userRouter.post("/signup", bodyParser.json(), async(req, res) => {
 });
 
 // Login route
-userRouter.post("/login", bodyParser.json, async (req, res) => {
+userRouter.post("/login", bodyParser.json(), async(req, res) => {
     console.log("Login accessed");
     try {
         console.log("Request email: " + req.body.email);
@@ -116,12 +117,15 @@ userRouter.post("/login", bodyParser.json, async (req, res) => {
         const isMatch = await bcryptjs.compare(password, user.password);
 
         if (!isMatch) {
+            console.log("Incorrect password entered.");
             return res.status(400).send({msg: "Incorrect Password"});
         }
         console.log("Attempting to make JWT Web Token")
         const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
+        console.log("Token: " + token);
+        console.log("User: " + user);
         res.json({ token, user: {id: user._id, username: user.username } });
-
+        console.log("Login succeeded.");
     } catch (err) {
         console.log("Error caught: " + err.message)
         res.status(500).json({error: err.message});
