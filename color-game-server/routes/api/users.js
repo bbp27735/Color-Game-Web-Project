@@ -2,6 +2,7 @@ const express = require('express');
 var bodyParser = require("body-parser");
 const bcryptjs = require("bcryptjs");
 const router = express.Router();
+const userRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const auth = require("../../middleware/auth");
 
@@ -60,8 +61,9 @@ router.get('/:id', (req, res) => {
 });
 
 
-router.post("/signup", bodyParser.json(), async(req, res) => {
+userRouter.post("/signup", bodyParser.json(), async(req, res) => {
     try {
+        console.log("trying signup")
         const { email, password, username, image } = req.body;
         if (!email || !password || !username || !image) {
             return res.status(400).json({msg: "Please enter all the fields."})
@@ -89,7 +91,7 @@ router.post("/signup", bodyParser.json(), async(req, res) => {
 });
 
 // Login route
-router.post("/login", async (req, res) => {
+userRouter.post("/login", async (req, res) => {
     try {
         const {email, password } = req.body;
         if(!email || !password) {

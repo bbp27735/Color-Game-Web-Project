@@ -49,7 +49,7 @@ const Login = (props) => {
     e.preventDefault();
     try {
       // send login request to the server
-      const response = axios.post('http://localhost:8084/api/users/login', formData);
+      const response = axios.post('http://localhost:8084/login', formData);
       setUserData({
         token: response.data.token,
         user: response.data.user,
