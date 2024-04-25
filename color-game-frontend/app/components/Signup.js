@@ -103,12 +103,14 @@ const Signup = (props) => {
       // Send signup request to the server
       console.log(formData);
       const signupRes = await axios.post('http://localhost:8084/api/users/signup', formData);
+      console.log("Signup completed. Now need to login.");
       // Send login request to the server
       const loginRes = await axios.post('http://localhost:8084/api/users/login', {
          email: formData.email,
          password: formData.password
        });
-
+       console.log("Login completed. Now to set the user data.");
+      
       // Update user data upon successful signup
       setUserData({
         token: signupRes.data.token,
@@ -117,6 +119,7 @@ const Signup = (props) => {
 
       // Store the authentication token in local storage
       localStorage.setItem("auth-token", signupRes.data.token);
+      console.log("Auth token stored in local storage. Now changing page.");
 
       // Optionally, you can redirect the user to another page upon successful signup
       router.push('/gameplay');
