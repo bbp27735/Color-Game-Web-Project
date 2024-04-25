@@ -100,22 +100,28 @@ userRouter.post("/signup", bodyParser.json(), async(req, res) => {
 userRouter.post("/login", async (req, res) => {
     try {
         const {email, password } = req.body;
+        console.log("Request body formed into variable.");
         if(!email || !password) {
             return res.status(400).json({msg: "Please enter all fields."});
         }
+        console.log("Fields missing for login");
         const user = await User.findOne({email});
         if (!user) {
+            console.log("User does not exist with the email: " + email)
             return res.status(400).send({msg: "User with this email address does not exist."});
         }
+        console.log("Awaiting match.");
         const isMatch = await bcryptjs.compare(password, user.password);
 
         if (!isMatch) {
             return res.status(400).send({msg: "Incorrect Password"});
         }
+        console.log("Attempting to make JWT Web Token")
         const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
         res.json({ token, user: {id: user._id, username: user.username } });
 
     } catch (err) {
+        console.log("Error caught: " + err.message)
         res.status(500).json({error: err.message});
     }
 });
