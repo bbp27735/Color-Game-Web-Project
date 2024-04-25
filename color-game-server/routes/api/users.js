@@ -97,7 +97,8 @@ userRouter.post("/signup", bodyParser.json(), async(req, res) => {
 });
 
 // Login route
-userRouter.post("/login", async (req, res) => {
+userRouter.post("/login", bodyParser.json, async (req, res) => {
+    console.log("Login accessed");
     try {
         console.log("Request email: " + req.body.email);
         const {email, password } = req.body;
