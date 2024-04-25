@@ -21,20 +21,6 @@ userRouter.put('/', (req, res) => {
  });
 
 
- // IF THE DELETE ROUTE MUST REQUIRE AUTHENTICATION, we can add a second parameter here
- // Therefore, it will go through the auth before proceeding
- // In this example, you can't delete a user without passing conditions within the authorization middleware
- /*
- router.delete('/:id', (req, res) => {
-    User.findByIdAndDelete(req.params.id)
-        .then((user) => {res.json({ msg: "Item was deleted successfully."})})
-        .catch((err) => res.status(404).json({ error: "No such item exists."}));
-});
-*/
-
-// delete code for an auth token
-
-
  userRouter.delete('/:id', (req, res) => {
     User.findByIdAndDelete(req.params.id, req.body)
         .then((user) => {res.json({ msg: "Item was deleted successfully."})})
@@ -48,6 +34,25 @@ userRouter.get('/', (req, res) => {
     .then((users) => res.json(users))
     .catch((err) => res.status(404).json({ noitemsfound: "No items found."}));
 });
+
+userRouter.put("/current", bodyParser.json(), async(req, res) => {
+    console.log("/current called to change pfp")
+    try {
+        
+        let workingChange = await User.findOneAndUpdate( 
+                {"email": {email} }, 
+                { $set: { "image": {image} }},
+                { sort: {returnNewDocument: true}},
+        ).then((user) => {res.json(workingChange)})
+        /*
+        console.log("Updated the profile pic.");
+        res.json(workingChange)
+        */
+        } catch (err) {
+            console.log("Error caught: " + err.message);
+            res.status(500).json({error: err.message});
+        }
+})
 
 userRouter.post('/', bodyParser.json(), (req, res) => {
     User.create(req.body)
