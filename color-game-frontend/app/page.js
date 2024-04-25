@@ -7,6 +7,7 @@ import Topbar from "./components/TopBar"
 import GamePage from "./components/Pages/GamePage"
 import StatsPage from "./components/Pages/StatsPage"
 import LoginPage from './components/Pages/LoginPage';
+import UserContext from './context/UserContext';
 
 export default function Home() {
   // must make a router

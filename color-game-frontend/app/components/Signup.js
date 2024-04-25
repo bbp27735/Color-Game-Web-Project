@@ -13,6 +13,8 @@ const Signup = (props) => {
 
   const axios = require('axios');
 
+  const { setUserData } = useContext(UserContext);
+
   const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
   const [email, setEmail] = useState('')

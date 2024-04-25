@@ -11,6 +11,8 @@ import './Login.css';
 const Login = (props) => {
 
   const router = useRouter();
+  //const userData = useContext(UserContext.user);
+  //const setUserData = useContext(UserContext.setUserData);
   const { userData, setUserData } = useContext(UserContext);
 
   const [email, setEmail] = useState('')
@@ -47,7 +49,7 @@ const Login = (props) => {
     e.preventDefault();
     try {
       // send login request to the server
-      const response = axios.post('http://localhost:8084/login', formData);
+      const response = axios.post('http://localhost:8084/api/users/login', formData);
       setUserData({
         token: response.data.token,
         user: response.data.user,
@@ -89,7 +91,11 @@ const Login = (props) => {
 
   }
 
-
+  if (!userData) {
+    return (
+      <div> <p> Loading... </p></div>
+    )
+  } else {
   return (
     <Card className="input">
       <form onSubmit={handleLogin}>
@@ -110,6 +116,7 @@ const Login = (props) => {
       </form>
     </Card>
   );
+  }
 };
 
 export default Login;
