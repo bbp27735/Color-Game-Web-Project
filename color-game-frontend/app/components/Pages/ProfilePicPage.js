@@ -14,13 +14,20 @@ const ProfilePicPage = () => {
 
     const [picLink, setPic] = useState('');
 
+    const [altText, setAlt] = useState('');
+
+    const handleAlt = (e) => {
+        setAlt(e.target.value);
+    }
+
     const handlePicture = (e) => {
         setPic(e.target.value);
     }
     
     useEffect(() => {
         setPic(picLink)
-    }, [picLink])
+        setAlt(altText)
+    }, [picLink, altText])
     
 
     const handleChange = async (e) => {
@@ -73,6 +80,12 @@ const ProfilePicPage = () => {
                     id="piclink"
                     value={picLink}
                     onChange={handlePicture}
+                    />
+                    <label>Description</label>
+                    <input
+                    id="alttext"
+                    value={altText}
+                    onChange={handleAlt}
                     />
                 <Button type="submit">Submit Pic</Button>
                 </form>

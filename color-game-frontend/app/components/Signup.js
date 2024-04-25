@@ -3,13 +3,17 @@ import React, { useState, useContext } from 'react';
 import Card from './UI/Card';
 import Button from './Button';
 import './Signup.css';
+import { useRouter } from 'next/navigation';
 import ProfilePicButton from './ProfilePicButton';
 import axios from 'axios';
 import UserContext from '../context/UserContext';
 
+
+
 const Signup = (props) => {
 
   const axios = require('axios');
+  const router = useRouter();
 
   const { setUserData } = useContext(UserContext);
 
@@ -25,12 +29,6 @@ const Signup = (props) => {
     image: '',
   });
 
-  const handleChange = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
-  }
 
   const handleUsername = (event) => {
     setFormData({
@@ -70,30 +68,6 @@ const Signup = (props) => {
     console.log("Image value: " + image);
 };
 
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const userLogin = {
-      name: username,
-      password: pass,
-      email: email,
-      image: image,
-    }
-    console.log(userLogin);
-    axios
-      .post('http://localhost:8084/api/signup', userLogin)
-      .then((res) => {
-        props.onSaveUserData(userLogin);
-
-        setUsername('')
-        setPass('')
-        setEmail('')
-        setImg('')
-      })
-      .catch((err) => {
-        console.log("Error in CreateItem: " + err)
-      })
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -193,3 +167,30 @@ export default Signup;
             />
         </div>
         */
+
+
+/*
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const userLogin = {
+      name: username,
+      password: pass,
+      email: email,
+      image: image,
+    }
+    console.log(userLogin);
+    axios
+      .post('http://localhost:8084/api/signup', userLogin)
+      .then((res) => {
+        props.onSaveUserData(userLogin);
+
+        setUsername('')
+        setPass('')
+        setEmail('')
+        setImg('')
+      })
+      .catch((err) => {
+        console.log("Error in CreateItem: " + err)
+      })
+  }
+  */
