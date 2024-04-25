@@ -24,7 +24,7 @@ const Login = (props) => {
 
   useEffect(() => {
     if (userData.token) {
-      router.push('/');
+      router.push('/gameplay');
     }
   }, [userData.token, router]);
 
@@ -55,17 +55,25 @@ const Login = (props) => {
     console.log(formData);
     try {
       // send login request to the server
-      const response = axios.post('http://localhost:8084/api/users/login', formData);
-      console.log(response.data);
-      console.log("Starting setUserData");
-      setUserData({
+      const response = axios.post('http://localhost:8084/api/users/login', formData)
+      .then((response) => {
+        console.log("Setting user data using response: " + response.data);
+        setUserData({
         token: response.data.token,
         user: response.data.user,
-      })
-      console.log("SetUserData ran");
+        })
+        console.log("Storing in local");
+        localStorage.setItem("auth-token", response.data.token)
+        console.log("Pushing to gameplay");
+        router.push('/gameplay');
+      });
+      //console.log("SetUserData ran");
       // Store the authentication in local storage
-      localStorage.setItem("auth-token", response.data.token);
-      router.push('/gameplay');
+      
+      //console.log(response.json());
+      //console.log("Starting setUserData");
+      
+      
     } catch (err) {
       console.log('Login Failed:', err.message);
       // handle login error
