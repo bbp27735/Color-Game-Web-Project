@@ -7,15 +7,14 @@ const router = express.Router();
 const port = process.env.PORT || 8084;
 const cors = require('cors');
 
-//app.use(cors({origin: true, credentials: true}));
-
-app.use(cors());
+app.use(cors({origin: true, credentials: true}));
 
 
 
-//app.get('/', (req, res) => res.send('Hello world!'));
+
+app.get('/', (req, res) => res.send('Hello world!'));
 //app.post('/', (req, res) => res.send('Hello world!'));
-
+/*
 app.get('/', function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
 })
@@ -23,6 +22,7 @@ app.get('/', function (req, res, next) {
 app.post('/', function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
 })
+*/
 
 const users = require('./routes/api/users');
 

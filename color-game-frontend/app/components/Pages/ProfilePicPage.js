@@ -12,28 +12,34 @@ import "./Page.css";
 const ProfilePicPage = () => {
     const { userData, setUserData } = useContext(UserContext);
 
-    
     const [picLink, setPic] = useState('');
 
     const handlePicture = (e) => {
         setPic(e.target.value);
     }
-
+    
     useEffect(() => {
         setPic(picLink)
     }, [picLink])
+    
 
     const handleChange = async (e) => {
+        console.log('Userdata id: ', userData.user.id);
+        console.log('Userdata image: ' , userData.user.image);
+        console.log('Userdata username: ', userData.user.user);
         e.preventDefault();
-        console.log(picLink);
+        console.log("PicLink: " + picLink);
         try {
             let newUserImage = {
                 ...userData.user,
                 image: picLink
             }
+            setPic('');
             console.log("Updating image...");
-            console.log(newUserImage);
-            const response = axios.put('https://localhost:8084/api/users/current', newUserImage)
+            console.log('newUserImage:', newUserImage);
+            let linkToUpdate = 'http://localhost:8084/api/users/' + userData.user.id;
+            console.log(linkToUpdate);
+            const response = axios.put(linkToUpdate, newUserImage)
             .then((response) => {
                 setUserData({
                     token: userData.token,
@@ -70,6 +76,7 @@ const ProfilePicPage = () => {
                     />
                 <Button type="submit">Submit Pic</Button>
                 </form>
+                <img src={picLink} alt="Your profile picture." width="250" height="250"></img>
             </Card>
             </div>
         </section>

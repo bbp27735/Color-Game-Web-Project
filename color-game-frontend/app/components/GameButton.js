@@ -27,11 +27,11 @@ const GameButton = (props) => {
         }
         console.log("Red Value: " + redValue);
 
-        if (redValue == 254) {
+        if (redValue == 9) {
             props.onWin('Red');
             setRed(0);
             setBlue(0);
-        } else if (blueValue == 254) {
+        } else if (blueValue == 9) {
             props.onWin('Blue');
             setRed(0);
             setBlue(0);
@@ -50,7 +50,7 @@ const GameButton = (props) => {
             <h3 className={teamClass}>{printType}</h3>
             <h3 className='game-button-h3'>Click here!!</h3>
             <h3 className='game-button-h3'>{currentRBVal}</h3>
-            <h3 className='game-button-h3'>Get to 255 to win!</h3>
+            <h3 className='game-button-h3'>Get to 255 (10) to win!</h3>
         </ScoreButton>
     );
 }
