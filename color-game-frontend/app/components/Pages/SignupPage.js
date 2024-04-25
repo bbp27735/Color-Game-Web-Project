@@ -25,7 +25,7 @@ const SignUpPage = (props) => {
     return (
         <div>
             <TopBar />
-            <h1 id="login_welcome">Welcome to Square Game!</h1>
+            <h1 id="login_welcome">Welcome to Color Clicker!</h1>
             <Signup onSaveUserData={signupDataHandler}/>
             <Link id="link_to_login_signup" href='login'>Log In</Link>
         </div>

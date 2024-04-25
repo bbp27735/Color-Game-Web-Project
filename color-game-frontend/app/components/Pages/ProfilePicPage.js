@@ -25,8 +25,8 @@ const ProfilePicPage = () => {
 
     const handleChange = async (e) => {
         console.log('Userdata id: ', userData.user.id);
-        console.log('Userdata image: ' , userData.user.image);
-        console.log('Userdata username: ', userData.user.user);
+        //console.log('Userdata image: ' , userData.user.image);
+        //console.log('Userdata username: ', userData.user.user);
         e.preventDefault();
         console.log("PicLink: " + picLink);
         try {
