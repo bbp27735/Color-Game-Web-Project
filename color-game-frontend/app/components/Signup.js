@@ -30,15 +30,27 @@ const Signup = (props) => {
   }
 
   const handleUsername = (event) => {
+    setFormData({
+      ...formData,
+      username: event.target.value,
+    });
     setUsername(event.target.value);
 
   }
 
   const handlePass = (event) => {
+    setFormData({
+      ...formData,
+      password: event.target.value,
+    });
     setPass(event.target.value);
   }
 
   const handleEmail = (event) => {
+    setFormData({
+      ...formData,
+      email: event.target.value,
+    });
     setEmail(event.target.value);
   }
 
@@ -69,7 +81,8 @@ const Signup = (props) => {
     e.preventDefault();
     try {
       // Send signup request to the server
-      const signupRes = await axios.post('http://localhost:8084/users/signup', formData);
+      console.log(formData);
+      const signupRes = await axios.post('http://localhost:8084/api/users/signup', formData);
       // Send login request to the server
       const loginRes = await axios.post('http://localhost:8084/login', {
         email: formData.email,
