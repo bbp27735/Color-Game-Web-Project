@@ -34,10 +34,25 @@ const ChatList = (props) => {
       
         }
 
-        if (chatData.username != '' && chatData.message != '') {
-          setChats([...chats, chatData])
-        }  
+        // if (chatData.username != '' && chatData.message != '') {
+        //   setChats([...chats, chatData])
+        // }        
+        
+        if (chatData.username !== '' && chatData.message !== '') {
+            // Create a new array with the new chat data and the current chats
+            let updatedChats = [...chats, chatData];
+    
+            // Remove oldest chat if chats array length exceeds 5
+            if (updatedChats.length > 5) {
+                updatedChats.shift(); // Remove the first item (oldest chat)
+            }
+    
+            setChats(updatedChats);
+        }
+
     }
+
+    
 
     const handleDeleteChat = (chatID) => {
         setChats(chats.filter(chat => chat.id !== chatID));
