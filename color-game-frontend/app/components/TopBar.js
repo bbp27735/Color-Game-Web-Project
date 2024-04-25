@@ -32,7 +32,7 @@ const TopBar = () => {
 					<Link className="buttonUse" href="/login">Login</Link>
                 )}
 
-            {/* <Link className="buttonUse" href='/login'>Log In</Link> */}
+            {/* <Link className="buttonUse" href='/login'>Log In</Link> THIS IS THE OLD LOGOUT BUTTON */} 
             <Link className="buttonUse" href='/profilePicture'>Profile Picture</Link>
             <h3>Square Game</h3>
         </header>

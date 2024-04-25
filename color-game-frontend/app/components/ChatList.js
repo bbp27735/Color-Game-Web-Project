@@ -1,5 +1,6 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../context/UserContext';
 import Chat from './Chat';
 import './ChatList.css';
 import AddChat from "./AddChat"
@@ -26,6 +27,8 @@ const ChatList = (props) => {
     }]
 
     const [chats, setChats] = useState(listOfChats);
+
+    const { userData, setUserData } = useContext(UserContext);
 
     const handleChats = (enteredChatData) => {
         const chatData = {
@@ -69,7 +72,14 @@ const ChatList = (props) => {
             )}
                 
         </div>
-        <AddChat onSendChat={handleChats}/>
+
+        {userData.token ? (
+					<AddChat onSendChat={handleChats}/>
+				) : (
+					<h1>YOURE NOT LOGGED IN</h1>
+                )}
+
+        
         </div>
     )
 
