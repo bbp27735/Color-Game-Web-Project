@@ -67,13 +67,9 @@ const ProfilePicPage = () => {
             {/* TopBar */}
             <TopBar />
 
-            <h1>
-                Enter a link for your profile picture
-            </h1>
-
-            {/* Profile pic buttons */}
-            <div>
-            <Card className="input">
+            {userData.token ? (
+                <Card className="input">
+                    <h1>Enter a link for your profile picture</h1>
                 <form onSubmit={handleChange}>
                     <label>Picture Link</label>
                     <input
@@ -90,7 +86,22 @@ const ProfilePicPage = () => {
                 <Button type="submit">Submit Pic</Button>
                 </form>
                 <img src={picLink} alt="Your profile picture." width="250" height="250"></img>
-            </Card>
+                </Card>
+
+				) : (
+                    
+                    <h1>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPk7xWmW-iMk7Hw7i08mlSMYRQYrncVgHMEQ&s" alt="stop sign" width="500"></img>
+                        <br></br>
+                        Must be logged in to update your profile picture
+                    </h1>
+                )}
+
+            
+
+            {/* Profile pic buttons */}
+            <div>
+            
             </div>
         </section>
     );

@@ -76,7 +76,7 @@ const ChatList = (props) => {
         {userData.token ? (
 					<AddChat onSendChat={handleChats}/>
 				) : (
-					<h1>YOURE NOT LOGGED IN</h1>
+					<h1>YOU ARE NOT LOGGED IN</h1>
                 )}
 
         
