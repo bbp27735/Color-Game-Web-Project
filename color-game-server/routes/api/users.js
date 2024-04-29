@@ -129,7 +129,7 @@ userRouter.post("/login", bodyParser.json(), async(req, res) => {
         const token = jwt.sign({ id: user._id}, process.env.JWT_SECRET);
         console.log("Token: " + token);
         console.log("User: " + user);
-        res.json({ token, user: {id: user._id, username: user.username } });
+        res.json({ token, user: {id: user._id, username: user.username, email: user.email, image: user.image } });
         console.log("Login succeeded.");
     } catch (err) {
         console.log("Error caught: " + err.message)
