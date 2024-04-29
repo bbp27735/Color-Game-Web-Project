@@ -34,7 +34,7 @@ chatRouter.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ noitemsfound: "No items found."}));
 });
 
-chatRouter.post('/', bodyParser.json(), async(req, res) => {
+chatRouter.post('/add', bodyParser.json(), async(req, res) => {
     try {
         const { username, chatContent, image } = req.body;
         if (!username || !chatContent || !image) {
