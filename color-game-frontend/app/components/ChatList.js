@@ -31,6 +31,8 @@ const ChatList = (props) => {
     const { userData, setUserData } = useContext(UserContext);
 
     const handleChats = (enteredChatData) => {
+        console.log('Userdata ID:', userData.user.id);
+        console.log('Userdata username:', userData.user.username);
         const chatData = {
         ...enteredChatData,
         id : Math.random().toString(),
