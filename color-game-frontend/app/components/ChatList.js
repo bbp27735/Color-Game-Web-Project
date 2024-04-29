@@ -44,9 +44,34 @@ const ChatList = (props) => {
 
     const { userData, setUserData } = useContext(UserContext);
 
+<<<<<<< Updated upstream
+=======
+    axios.defaults.headers.common = {'Authorization': `Bearer ${userData.token}`}
+
+    useEffect(() => {
+        // Fetch chat data from the API
+        axios.get('http://localhost:8084/api/chats')
+            .then(function (response) {
+                const jsonData = response.data;
+                const formattedData = jsonData.map(function(item) {
+                    return {
+                        id: item._id,
+                        username: item.username,
+                        message: item.chatContent,
+                        image: item.image
+                    };
+                });
+                setChats(formattedData); // Update the state with fetched data
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, [chats]);
+
+>>>>>>> Stashed changes
     const handleChats = (enteredChatData) => {
-        console.log('Userdata ID:', userData.user.id);
-        console.log('Userdata username:', userData.user.username);
+        // console.log('Userdata ID:', userData.user.id);
+        // console.log('Userdata username:', userData.user.username);
         const chatData = {
         ...enteredChatData,
         id : Math.random().toString(),

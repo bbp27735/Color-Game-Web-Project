@@ -27,7 +27,10 @@ chatRouter.put('/', (req, res) => {
     console.log(auth);
     Chat.findByIdAndDelete(req.params.id, req.body)
         .then((chat) => {res.json({ msg: "Item was deleted successfully."})})
-        .catch((err) => res.status(404).json({ error: "No such item exists."}));
+        .catch((err) => {
+            console.log(err.message);
+            res.status(404).json({ error: "No such item exists."});
+        })
 });
 
 chatRouter.get('/', (req, res) => {

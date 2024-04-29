@@ -9,7 +9,7 @@ const Chat = props => {
 
     const { userData, setUserData } = useContext(UserContext);
 
-    console.log("Username for chat: " + props.username);
+    // console.log("Username for chat: " + props.username);
     return (    
         <li className="user-item" key={props.key}>
         <div className="user-info">
