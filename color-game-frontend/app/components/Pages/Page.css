@@ -68,3 +68,43 @@ body {
 	font-size: larger;
 }
 
+/*css for profile pic page*/
+.profilePicContainer {
+	text-align: center;
+}
+
+.profilePicHeader {
+	margin-top: 20px; /* Adjust as needed */
+}
+
+.profilePicButtonsContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px; /* Adjust as needed */
+}
+
+.profilePicButton {
+	margin: 0 10px; /* Adjust as needed for spacing between buttons */
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding: 0;
+	width: 100px; /* Adjust as needed */
+	height: 100px; /* Adjust as needed */
+	border-radius: 50%; /* Makes the button circular */
+	overflow: hidden; /* Ensure the image stays within the button boundaries */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profilePicButton img {
+	width: 100%; /* Ensures the image fills the button */
+	height: auto; /* Maintains aspect ratio */
+	border-radius: 50%; /* Makes the image circular */
+}
+.profilePicButtonsContainer {
+	display: flex;
+	justify-content: center; 
+	align-items: center;
+}

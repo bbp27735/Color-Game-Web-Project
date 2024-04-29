@@ -10,7 +10,7 @@ const ChatSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    messageContent: {
+    chatContent: {
         type: String,
     },
     image: {
@@ -22,7 +22,7 @@ const ChatSchema = new mongoose.Schema({
     },
 })
 
-module.exports = Message = mongoose.model('message', ChatSchema);
+module.exports = Message = mongoose.model('chat', ChatSchema);
 // mongoose.model compiles the model, which we are referring to as Item
 // We can invoke our database methods on Item
 // First argument 'item' is the sigular name of the collection
