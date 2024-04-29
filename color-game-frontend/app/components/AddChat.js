@@ -24,12 +24,12 @@ const AddChat = (props) => {
     event.preventDefault();
 
     const username = userData.user.username;
-    const img = userData.user.image;
+    const image = userData.user.image;
 
     const chatData = {
       username: username,
       message: message,
-      img: img,
+      image: image,
     }
 
     props.onSendChat(chatData);

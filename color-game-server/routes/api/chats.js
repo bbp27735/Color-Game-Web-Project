@@ -39,7 +39,7 @@ chatRouter.post('/add', bodyParser.json(), async(req, res) => {
     try {
         const { username, chatContent, image } = req.body;
         console.log("Created a variable object")
-        if (!username || !chatContent || !image) {
+        if (!chatContent) {
             return res.status(400).json({msg: "Please enter all the fields."})
         }
         const newChat = new Chat({username, chatContent, image});

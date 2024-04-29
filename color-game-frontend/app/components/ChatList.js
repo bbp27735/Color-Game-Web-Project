@@ -42,7 +42,7 @@ const ChatList = (props) => {
                         id: item._id,
                         username: item.username,
                         message: item.chatContent,
-                        img: item.img
+                        image: item.image
                     };
                 });
                 setChats(formattedData); // Update the state with fetched data
@@ -82,7 +82,7 @@ const ChatList = (props) => {
         console.log('Userdata username:', userData.user.username);
         const chatData = {
         ...enteredChatData,
-        id : Math.random().toString(),
+        //id : Math.random().toString(),
         }
 
         // if (chatData.username != '' && chatData.message != '') {
@@ -102,15 +102,17 @@ const ChatList = (props) => {
         }
 
         // Send the chat data to the API
-        axios.post('http://localhost:8084/api/chats', {
+        axios.post('http://localhost:8084/api/chats/add', {
             username: chatData.username,
             chatContent: chatData.message,
-            img: chatData.img
+            image: chatData.image
         })
             .then(function (response) {
+                console.log("Trying post");
                 console.log(response);
             })
             .catch(function (error) {
+                console.log("Post error");
                 console.log(error);
             });
     }
@@ -144,7 +146,7 @@ const ChatList = (props) => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} img ={chat.img} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
             )}
                 
         </div>

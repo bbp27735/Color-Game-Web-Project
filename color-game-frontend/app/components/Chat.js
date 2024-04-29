@@ -14,7 +14,7 @@ const Chat = props => {
         <li className="user-item" key={props.key}>
         <div className="user-info">
             <h3>From: {props.username}</h3>
-            <img src={props.img} alt="profile pic" width="50"></img>                      
+            <img src={props.image} alt="profile pic" width="50"></img>                      
             <h3>{props.message}</h3>
         </div>
 
