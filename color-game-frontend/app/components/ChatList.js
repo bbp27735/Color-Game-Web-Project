@@ -8,44 +8,12 @@ import axios from 'axios';
 
 const ChatList = (props) => {
 
-    const axios = require('axios');
 
-    let returnChats = [];
 
-    const getData = async () => {
-        returnChats = await axios.get('http://localhost:8084/api/chats/');
-        console.log('THIS IS MY GET REQUEST', returnChats.data);
-      }
-
-      useEffect( () => {
-        getData();
-      }, []);
-
-    const listOfChats = [{
-        id: 1,
-        username: "Debug",
-        chatContent: "Hello World!",
-        image: "https://i.pinimg.com/564x/f0/e2/3e/f0e23e83f07e9da8f8ded461b4284504.jpg"
-    },
-    {
-        id: 2,
-        username: "Mario",
-        chatContent: "Wahooo",
-        image: "https://upload.wikimedia.org/wikipedia/en/a/a9/MarioNSMBUDeluxe.png"
-    },
-    {
-        id: 3,
-        username: "Stitch",
-        chatContent: "Ohana",
-        image: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Stitch_%28Lilo_%26_Stitch%29.svg/1200px-Stitch_%28Lilo_%26_Stitch%29.svg.png"
-    }]
-
-    const [chats, setChats] = useState(listOfChats);
+    const [chats, setChats] = useState([]);
 
     const { userData, setUserData } = useContext(UserContext);
 
-<<<<<<< Updated upstream
-=======
     axios.defaults.headers.common = {'Authorization': `Bearer ${userData.token}`}
 
     useEffect(() => {
@@ -68,19 +36,21 @@ const ChatList = (props) => {
             });
     }, [chats]);
 
->>>>>>> Stashed changes
     const handleChats = (enteredChatData) => {
         // console.log('Userdata ID:', userData.user.id);
         // console.log('Userdata username:', userData.user.username);
         const chatData = {
         ...enteredChatData,
-        id : Math.random().toString(),
-      
-        }   
+        //id : Math.random().toString(),
+        }
 
-        if (chatData.username !== '' && chatData.chatContent !== '') {
+        // if (chatData.username != '' && chatData.message != '') {
+        //   setChats([...chats, chatData])
+        // }        
+        
+        if (chatData.username !== '' && chatData.message !== '') {
             // Create a new array with the new chat data and the current chats
-            let updatedChats = [chatData, ...chats];
+            let updatedChats = [...chats, chatData];
     
             // Remove oldest chat if chats array length exceeds 5
             if (updatedChats.length > 5) {
@@ -88,16 +58,46 @@ const ChatList = (props) => {
             }
     
             setChats(updatedChats);
-
         }
 
+        // Send the chat data to the API
+        axios.post('http://localhost:8084/api/chats/add', {
+            username: chatData.username,
+            chatContent: chatData.message,
+            image: chatData.image
+        })
+            .then(function (response) {
+                console.log("Trying post");
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log("Post error");
+                console.log(error);
+            });
     }
 
-    
 
     const handleDeleteChat = (chatID) => {
-        setChats(chats.filter(chat => chat.id !== chatID));
-    }
+        console.log("Deleting chat with ID: " + chatID);
+        console.log('Token: ', userData.token);
+        // Validate if the current user's username matches the username associated with the chat message
+        // if (userData.user.username === chats.find(chat => chat.id === chatID)?.username) {
+            axios.delete(`http://localhost:8084/api/chats/${chatID}`)
+                .then(function (response) {
+                    console.log(response);
+                    // Update the chat list after successful deletion
+                    const updatedChats = chats.filter(chat => chat.id !== chatID);
+                    setChats(updatedChats);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        //} else {
+          //  console.log("User does not have permission to delete this chat message.");
+        //}
+    };
+    
+    
 
 
     // might need a key value on the list li
@@ -106,7 +106,7 @@ const ChatList = (props) => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.chatContent} updatedData={chat.updated_date} onDelete={() => handleDeleteChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
             )}
                 
         </div>
