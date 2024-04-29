@@ -39,9 +39,9 @@ const ChatList = (props) => {
                 const jsonData = response.data;
                 const formattedData = jsonData.map(function(item) {
                     return {
-                        id: item.id,
+                        id: item._id,
                         username: item.username,
-                        message: item.message,
+                        message: item.chatContent,
                         img: item.img
                     };
                 });
@@ -52,7 +52,7 @@ const ChatList = (props) => {
             });
     }, []);
 
-    const handleChats = (enteredChatData) => {
+/*  const handleChats = (enteredChatData) => {
         console.log('Userdata ID:', userData.user.id);
         console.log('Userdata username:', userData.user.username);
         const chatData = {
@@ -76,11 +76,66 @@ const ChatList = (props) => {
             setChats(updatedChats);
         }
     }
+    */
+    const handleChats = (enteredChatData) => {
+        console.log('Userdata ID:', userData.user.id);
+        console.log('Userdata username:', userData.user.username);
+        const chatData = {
+        ...enteredChatData,
+        id : Math.random().toString(),
+        }
+
+        // if (chatData.username != '' && chatData.message != '') {
+        //   setChats([...chats, chatData])
+        // }        
+        
+        if (chatData.username !== '' && chatData.message !== '') {
+            // Create a new array with the new chat data and the current chats
+            let updatedChats = [...chats, chatData];
+    
+            // Remove oldest chat if chats array length exceeds 5
+            if (updatedChats.length > 5) {
+                updatedChats.shift(); // Remove the first item (oldest chat)
+            }
+    
+            setChats(updatedChats);
+        }
+
+        // Send the chat data to the API
+        axios.post('http://localhost:8084/api/chats', {
+            username: chatData.username,
+            chatContent: chatData.message,
+            img: chatData.img
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
 
     const handleDeleteChat = (chatID) => {
-        setChats(chats.filter(chat => chat.id !== chatID));
-    }
+        console.log("Deleting chat with ID: " + chatID);
+        // Validate if the current user's username matches the username associated with the chat message
+        if (userData.user.username === chats.find(chat => chat.id === chatID)?.username) {
+            axios.delete(`http://localhost:8084/api/chats/${chatID}`)
+                .then(function (response) {
+                    console.log(response);
+                    // Update the chat list after successful deletion
+                    const updatedChats = chats.filter(chat => chat.id !== chatID);
+                    setChats(updatedChats);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        } else {
+            console.log("User does not have permission to delete this chat message.");
+        }
+    };
+    
+    
 
 
     // might need a key value on the list li
