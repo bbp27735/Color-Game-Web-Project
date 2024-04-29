@@ -19,7 +19,10 @@ const Chat = props => {
         </div>
 
         {userData.token ? (
+                <div>
 					<button onClick={props.onDelete}>Delete</button>
+                    <button onClick={props.onEdit}>Edit</button>
+                </div>
 				) : (
                     <h1></h1>
                 )}

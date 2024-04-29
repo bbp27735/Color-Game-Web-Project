@@ -4,6 +4,7 @@ import UserContext from '../context/UserContext';
 import Chat from './Chat';
 import './ChatList.css';
 import AddChat from "./AddChat"
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 const ChatList = (props) => {
@@ -15,6 +16,8 @@ const ChatList = (props) => {
     const { userData, setUserData } = useContext(UserContext);
 
     axios.defaults.headers.common = {'Authorization': `Bearer ${userData.token}`}
+
+    const router = useRouter();
 
     useEffect(() => {
         // Fetch chat data from the API
@@ -36,6 +39,10 @@ const ChatList = (props) => {
             });
     }, [chats]);
 
+    const handleEditChat = (chatID) => {
+        router.push('/editpage');
+    }
+
     const handleChats = (enteredChatData) => {
         // console.log('Userdata ID:', userData.user.id);
         // console.log('Userdata username:', userData.user.username);
@@ -50,11 +57,14 @@ const ChatList = (props) => {
         
         if (chatData.username !== '' && chatData.message !== '') {
             // Create a new array with the new chat data and the current chats
-            let updatedChats = [...chats, chatData];
+            let updatedChats = [chatData, ...chats];
     
             // Remove oldest chat if chats array length exceeds 5
             if (updatedChats.length > 5) {
-                updatedChats.pop(); // Remove the first item (oldest chat)
+                let chatIDToDelete = chats[0].id; // Remove the first item (oldest chat)
+                console.log(chatIDToDelete);
+                console.log(chats[0]);
+                handleDeleteChat(chatIDToDelete);
             }
     
             setChats(updatedChats);
@@ -92,9 +102,7 @@ const ChatList = (props) => {
                 .catch(function (error) {
                     console.log(error);
                 });
-        //} else {
-          //  console.log("User does not have permission to delete this chat message.");
-        //}
+
     };
     
     
@@ -106,7 +114,7 @@ const ChatList = (props) => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id)} />
             )}
                 
         </div>
