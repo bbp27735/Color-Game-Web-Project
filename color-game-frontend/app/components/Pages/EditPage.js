@@ -9,7 +9,9 @@ import UserContext from '../../context/UserContext';
 import ProfilePicButton from '../ProfilePicButton';
 import "./Page.css";
 
-const EditChatPage = () => {
+const EditChatPage = (props) => {
+
+
     const { userData, setUserData } = useContext(UserContext);
 
     const [message, setMessage] = useState('');
@@ -68,6 +70,8 @@ const EditChatPage = () => {
             <div>
                 <Card className="input">
                     <h1>Enter the new message</h1>
+                    <h2>Current Message:</h2>
+                    <h2>[message]</h2>
                 <form onSubmit={handleChange}>
                     <label>New Message</label>
                     <input
