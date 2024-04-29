@@ -34,10 +34,22 @@ chatRouter.get('/', (req, res) => {
     .catch((err) => res.status(404).json({ noitemsfound: "No items found."}));
 });
 
-chatRouter.post('/', bodyParser.json(), (req, res) => {
-    Chat.create(req.body)
-    .then((chat) => res.json({ msg: 'Chat added successfully!'}))
-    .catch((err) => res.status(400).json({ error: 'Unable to add this item' + err}));
+chatRouter.post('/', bodyParser.json(), async(req, res) => {
+    try {
+        const { username, chatContent, image } = req.body;
+        if (!username || !chatContent || !image) {
+            return res.status(400).json({msg: "Please enter all the fields."})
+        }
+        const newChat = new Chat({username, chatContent, image});
+        const savedChat = await newChat.save();
+        res.json(savedChat);
+    } catch (err) {
+        res.status(500).json({error: err.message});
+    }
+
+    //Chat.create(req.body)
+    //.then((chat) => res.json({ msg: 'Chat added successfully!'}))
+    // .catch((err) => res.status(400).json({ error: 'Unable to add this item' + err}));
 })
 
 chatRouter.get('/:id', (req, res) => {
