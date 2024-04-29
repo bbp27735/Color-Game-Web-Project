@@ -41,13 +41,13 @@ const Login = (props) => {
 
   const handleChange = (e) => {
     let itemToChange = e.target.name
-    console.log(itemToChange);
+    // console.log(itemToChange);
     setFormData({
       ...formData,
       [formData.itemToChange]: e.target.value,
     });
-    console.log(formData.email);
-    console.log(formData.password);
+    // console.log(formData.email);
+    // console.log(formData.password);
   };
 
   const handleLogin = async (e) => {
@@ -57,7 +57,7 @@ const Login = (props) => {
       // send login request to the server
       const response = axios.post('http://localhost:8084/api/users/login', formData)
       .then((response) => {
-        console.log("Setting user data using response: " + response.data);
+        // console.log("Setting user data using response: " + response.data);
         setUserData({
         token: response.data.token,
         user: response.data.user,
@@ -93,7 +93,7 @@ const Login = (props) => {
   }
 
   useEffect(() => {
-    console.log("Email Updated");
+    // console.log("Email Updated");
     setEmail(email);
     setPass(password);
     setFormData({
@@ -103,7 +103,7 @@ const Login = (props) => {
   }, [email])
 
   useEffect(() => {
-    console.log("Password Updated");
+    // console.log("Password Updated");
     setEmail(email);
     setPass(password);
     setFormData({
