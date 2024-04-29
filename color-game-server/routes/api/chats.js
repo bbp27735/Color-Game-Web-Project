@@ -35,15 +35,20 @@ chatRouter.get('/', (req, res) => {
 });
 
 chatRouter.post('/add', bodyParser.json(), async(req, res) => {
+    console.log("Trying chatrouter /add")
     try {
         const { username, chatContent, image } = req.body;
+        console.log("Created a variable object")
         if (!username || !chatContent || !image) {
             return res.status(400).json({msg: "Please enter all the fields."})
         }
         const newChat = new Chat({username, chatContent, image});
+        console.log("Created a new chat")
         const savedChat = await newChat.save();
+        console.log("Saved a new chat")
         res.json(savedChat);
     } catch (err) {
+        console.log(err.message)
         res.status(500).json({error: err.message});
     }
 
