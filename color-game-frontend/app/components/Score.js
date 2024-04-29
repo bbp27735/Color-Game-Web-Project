@@ -4,7 +4,7 @@ import './Score.css';
 const Score = (props) => {
     // State to keep track of wins for red and blue teams
     // const [redWins, setRedWins] = useState(props.redWin);
-    const [blueWins, setBlueWins] = useState(props.blueWin);
+    const blueWins = props.blueWin;
     const redWins = props.redWin;
 
     return (

@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/UserContext';
+import ChatContext from '../context/ChatContext';
 import Chat from './Chat';
 import './ChatList.css';
 import AddChat from "./AddChat"
@@ -14,6 +15,8 @@ const ChatList = (props) => {
     const [chats, setChats] = useState([]);
 
     const { userData, setUserData } = useContext(UserContext);
+
+    const { chatData, setChatData } = useContext(ChatContext);
 
     axios.defaults.headers.common = {'Authorization': `Bearer ${userData.token}`}
 
@@ -40,6 +43,7 @@ const ChatList = (props) => {
     }, [chats]);
 
     const handleEditChat = (chatID) => {
+        setChatData(chatID);
         router.push('/editpage');
     }
 

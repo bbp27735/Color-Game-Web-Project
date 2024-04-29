@@ -22,7 +22,7 @@ const TopBar = () => {
         <div>
         <header className="topBarButtons">
             <Link className="buttonUse" href='/gameplay'>Game Page</Link>
-            <Link className="buttonUse" href='/statistics'>Stats</Link>
+            
 
             {userData.token ? (
 					<button onClick={handleLogout} className="buttonUse">

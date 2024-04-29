@@ -77,8 +77,10 @@ const GamePage = (props) => {
         alert("Congrats to team " + teamWin + " for winning the round!");
         if (teamWin == 'Blue') {
             changeBlueWins();
+            console.log(blueWins);
         } else {
             changeRedWins();
+            console.log(redWins);
         }
         console.log("Red Wins: " + redWins)
         console.log("Blue Wins: " + blueWins)
