@@ -1,12 +1,14 @@
 'use client'
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/UserContext';
 import Chat from './Chat';
 import './ChatList.css';
 import AddChat from "./AddChat"
+import axios from 'axios';
 
 const ChatList = (props) => {
 
+    /*
     const listOfChats = [{
         id: 1,
         username: "Debug",
@@ -25,10 +27,30 @@ const ChatList = (props) => {
         message: "Ohana",
         img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Stitch_%28Lilo_%26_Stitch%29.svg/1200px-Stitch_%28Lilo_%26_Stitch%29.svg.png"
     }]
-
-    const [chats, setChats] = useState(listOfChats);
+    */
+    const [chats, setChats] = useState([]);
 
     const { userData, setUserData } = useContext(UserContext);
+
+    useEffect(() => {
+        // Fetch chat data from the API
+        axios.get('http://localhost:8084/api/chats')
+            .then(function (response) {
+                const jsonData = response.data;
+                const formattedData = jsonData.map(function(item) {
+                    return {
+                        id: item.id,
+                        username: item.username,
+                        message: item.message,
+                        img: item.img
+                    };
+                });
+                setChats(formattedData); // Update the state with fetched data
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }, []);
 
     const handleChats = (enteredChatData) => {
         console.log('Userdata ID:', userData.user.id);
@@ -36,7 +58,6 @@ const ChatList = (props) => {
         const chatData = {
         ...enteredChatData,
         id : Math.random().toString(),
-      
         }
 
         // if (chatData.username != '' && chatData.message != '') {
@@ -54,10 +75,8 @@ const ChatList = (props) => {
     
             setChats(updatedChats);
         }
-
     }
 
-    
 
     const handleDeleteChat = (chatID) => {
         setChats(chats.filter(chat => chat.id !== chatID));
