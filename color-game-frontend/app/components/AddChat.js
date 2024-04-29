@@ -4,13 +4,16 @@ import UserContext from '../context/UserContext';
 import ChatCard from './ChatCard';
 import Button from './Button';
 import './AddChat.css';
+import axios from 'axios';
 
 
 
 const AddChat = (props) => {
 
+  const axios = require('axios');
+
   const [username, setUsername] = useState('')
-  const [message, setMessage] = useState('')
+  const [chatContent, setMessage] = useState('')
   const [profilepic, setProfilePic] = useState('')
 
   const { userData, setUserData } = useContext(UserContext);
@@ -19,22 +22,32 @@ const AddChat = (props) => {
     setMessage(event.target.value);
   }
 
-
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const username = userData.user.username;
     const image = userData.user.image;
 
+    console.log('IMAGE:', image);
+
     const chatData = {
       username: username,
-      message: message,
+      chatContent: chatContent,
       image: image,
     }
 
     props.onSendChat(chatData);
 
-    setMessage('')    
+    setMessage('')
+
+        try {
+
+          console.log("Chat data: ", chatData)
+          const chat = await axios.post('http://localhost:8084/api/chats/add', chatData);
+          
+        } catch (err) {
+            console.log('Update Failed:', err.message);
+        }
 
   }
 
@@ -46,7 +59,7 @@ const AddChat = (props) => {
         <label>Message</label>
         <input
           id="message"
-          value={message}
+          value={chatContent}
           onChange={handleMessage}
         />
         <Button type="submit">Send</Button>

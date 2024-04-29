@@ -9,7 +9,7 @@ const Chat = props => {
 
     const { userData, setUserData } = useContext(UserContext);
 
-    console.log("Username for chat: " + props.username);
+    // console.log("Username for chat: " + props.username);
     return (    
         <li className="user-item" key={props.key}>
         <div className="user-info">
@@ -19,7 +19,10 @@ const Chat = props => {
         </div>
 
         {userData.token ? (
+                <div>
 					<button onClick={props.onDelete}>Delete</button>
+                    <button onClick={props.onEdit}>Edit</button>
+                </div>
 				) : (
                     <h1></h1>
                 )}

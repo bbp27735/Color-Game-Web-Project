@@ -69,6 +69,7 @@ const Login = (props) => {
       }).catch((response) => {
         // set a "Show error message here"
         console.log("Caught an error. Probably incorrect password or username");
+        alert("Incorrect password and/or username")
       });
       //console.log("SetUserData ran");
       // Store the authentication in local storage

@@ -1,36 +1,26 @@
 'use client'
 import React, { useState, useContext, useEffect } from 'react';
 import UserContext from '../context/UserContext';
+import ChatContext from '../context/ChatContext';
 import Chat from './Chat';
 import './ChatList.css';
 import AddChat from "./AddChat"
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 const ChatList = (props) => {
 
-    /*
-    const listOfChats = [{
-        id: 1,
-        username: "Debug",
-        message: "Hello World!",
-        img: "https://i.pinimg.com/564x/f0/e2/3e/f0e23e83f07e9da8f8ded461b4284504.jpg"
-    },
-    {
-        id: 2,
-        username: "Mario",
-        message: "Wahooo",
-        img: "https://upload.wikimedia.org/wikipedia/en/a/a9/MarioNSMBUDeluxe.png"
-    },
-    {
-        id: 3,
-        username: "Stitch",
-        message: "Ohana",
-        img: "https://upload.wikimedia.org/wikipedia/en/thumb/d/d2/Stitch_%28Lilo_%26_Stitch%29.svg/1200px-Stitch_%28Lilo_%26_Stitch%29.svg.png"
-    }]
-    */
+
+
     const [chats, setChats] = useState([]);
 
     const { userData, setUserData } = useContext(UserContext);
+
+    const { chatData, setChatData } = useContext(ChatContext);
+
+    axios.defaults.headers.common = {'Authorization': `Bearer ${userData.token}`}
+
+    const router = useRouter();
 
     useEffect(() => {
         // Fetch chat data from the API
@@ -50,36 +40,16 @@ const ChatList = (props) => {
             .catch(function (error) {
                 console.log(error);
             });
-    }, []);
+    }, [chats]);
 
-/*  const handleChats = (enteredChatData) => {
-        console.log('Userdata ID:', userData.user.id);
-        console.log('Userdata username:', userData.user.username);
-        const chatData = {
-        ...enteredChatData,
-        id : Math.random().toString(),
-        }
-
-        // if (chatData.username != '' && chatData.message != '') {
-        //   setChats([...chats, chatData])
-        // }        
-        
-        if (chatData.username !== '' && chatData.message !== '') {
-            // Create a new array with the new chat data and the current chats
-            let updatedChats = [...chats, chatData];
-    
-            // Remove oldest chat if chats array length exceeds 5
-            if (updatedChats.length > 5) {
-                updatedChats.shift(); // Remove the first item (oldest chat)
-            }
-    
-            setChats(updatedChats);
-        }
+    const handleEditChat = (chatID) => {
+        setChatData(chatID);
+        router.push('/editpage');
     }
-    */
+
     const handleChats = (enteredChatData) => {
-        console.log('Userdata ID:', userData.user.id);
-        console.log('Userdata username:', userData.user.username);
+        // console.log('Userdata ID:', userData.user.id);
+        // console.log('Userdata username:', userData.user.username);
         const chatData = {
         ...enteredChatData,
         //id : Math.random().toString(),
@@ -91,11 +61,14 @@ const ChatList = (props) => {
         
         if (chatData.username !== '' && chatData.message !== '') {
             // Create a new array with the new chat data and the current chats
-            let updatedChats = [...chats, chatData];
+            let updatedChats = [chatData, ...chats];
     
             // Remove oldest chat if chats array length exceeds 5
             if (updatedChats.length > 5) {
-                updatedChats.shift(); // Remove the first item (oldest chat)
+                let chatIDToDelete = chats[0].id; // Remove the first item (oldest chat)
+                console.log(chatIDToDelete);
+                console.log(chats[0]);
+                handleDeleteChat(chatIDToDelete);
             }
     
             setChats(updatedChats);
@@ -120,8 +93,9 @@ const ChatList = (props) => {
 
     const handleDeleteChat = (chatID) => {
         console.log("Deleting chat with ID: " + chatID);
+        console.log('Token: ', userData.token);
         // Validate if the current user's username matches the username associated with the chat message
-        if (userData.user.username === chats.find(chat => chat.id === chatID)?.username) {
+        // if (userData.user.username === chats.find(chat => chat.id === chatID)?.username) {
             axios.delete(`http://localhost:8084/api/chats/${chatID}`)
                 .then(function (response) {
                     console.log(response);
@@ -132,9 +106,7 @@ const ChatList = (props) => {
                 .catch(function (error) {
                     console.log(error);
                 });
-        } else {
-            console.log("User does not have permission to delete this chat message.");
-        }
+
     };
     
     
@@ -146,7 +118,7 @@ const ChatList = (props) => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id)} />
             )}
                 
         </div>
