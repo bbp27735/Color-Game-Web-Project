@@ -12,7 +12,9 @@ const User = require('../../models/User');
 
 userRouter.put('/:id', bodyParser.json(), (req, res) => {
     User.findByIdAndUpdate(req.params.id, req.body)
-        .then((user) => res.json({user: {id: user._id, username: user.username, email: user.email, image: user.image }}))//res.json({ msg: 'Updated user successfully' }))
+        .then((user) => {
+            console.log(user);
+            res.json({user: {id: user._id, username: user.username, email: user.email, image: user.image }})})//res.json({ msg: 'Updated user successfully' }))
         .catch((err) => res.status(400).json({ error: 'Unable to update the Databse' }));
 });
 
@@ -62,7 +64,10 @@ userRouter.post('/', bodyParser.json(), (req, res) => {
 
 userRouter.get('/:id', (req, res) => {
     User.findById(req.params.id)
-    .then((user) => {res.json(user)})
+    .then((user) => {
+        console.log(user);
+        res.json(user)
+    })
     .catch((err) => res.status(404).json({ noitemfound: "No user found." }));
 });
 

@@ -44,9 +44,10 @@ chatRouter.post('/add', bodyParser.json(), async(req, res) => {
     try {
         const { username, chatContent, image } = req.body;
         console.log("Created a variable object")
-        if (!chatContent) {
-            return res.status(400).json({msg: "Please enter all the fields."})
-        }
+        //if (!chatContent) {
+        //    return res.status(400).json({msg: "Please enter all the fields."})
+        //}
+        console.log(req.body);
         const newChat = new Chat({username, chatContent, image});
         console.log("Created a new chat")
         const savedChat = await newChat.save();
@@ -63,9 +64,16 @@ chatRouter.post('/add', bodyParser.json(), async(req, res) => {
 })
 
 chatRouter.get('/:id', (req, res) => {
+    console.log("Information getting..");
     Chat.findById(req.params.id)
-    .then((chat) => {res.json(chat)})
-    .catch((err) => res.status(404).json({ noitemfound: "No chat found." }));
+    .then((chat) => {
+        console.log("Information got!");
+        res.json(chat)
+    })
+    .catch((err) => {
+        console.log(err.message);
+        res.status(404).json({ noitemfound: "No chat found." })
+});
 });
 
 module.exports = chatRouter;

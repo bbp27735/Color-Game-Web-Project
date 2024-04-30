@@ -51,11 +51,11 @@ const conn_str = 'mongodb+srv://genericuser:X3bFqyQ6npupzB5I@userandgame.ldoopoq
 mongoose.set('strictQuery', false);
 mongoose.connect(conn_str).then(() => {
     app.listen(port, () => console.log(`Server running on port ${port}`));
-    console.log("MongoDB Connection Succeeded");
+    console.log("MongoDB Conection Succeeded");
 })
 .catch(err => {
     console.log(`Error in DB Connection: ${err}`);
 })
 
 
-app.listen(process.env.port || 8804);
+app.listen(process.env.port);

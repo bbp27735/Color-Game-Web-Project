@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, userData, useContext } from 'react';
+import React, { useState, userData, useContext, useEffect } from 'react';
 import UserContext from '../context/UserContext';
 import ChatCard from './ChatCard';
 import Button from './Button';
@@ -19,14 +19,25 @@ const AddChat = (props) => {
   const { userData, setUserData } = useContext(UserContext);
 
   const handleMessage = (event) => {
+    console.log(userData);
     setMessage(event.target.value);
   }
 
+  useEffect(() => {
+    setUserData({
+      token: userData.token,
+      user: userData.user,
+    })
+  }, [userData])
+
   const submitHandler = async (event) => {
     event.preventDefault();
-
+    console.log(userData);
+    
     const username = userData.user.username;
+    
     const image = userData.user.image;
+    
 
     console.log('IMAGE:', image);
 
@@ -43,7 +54,7 @@ const AddChat = (props) => {
         try {
 
           console.log("Chat data: ", chatData)
-          const chat = await axios.post('http://localhost:8084/api/chats/add', chatData);
+          // const chat = await axios.post('http://localhost:8084/api/chats/add', chatData);
           
         } catch (err) {
             console.log('Update Failed:', err.message);

@@ -4,7 +4,7 @@ import './ChatCard.css';
 
 const ChatCard = (props) => {
   const classes = 'card ' + props.className;
-  return <div class="chat-div" className={classes}>{props.children}</div>;
+  return <div className='card input'>{props.children}</div>;
 };
 
 export default ChatCard;

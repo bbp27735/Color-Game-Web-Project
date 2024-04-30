@@ -18,6 +18,7 @@ const ProfilePicPage = () => {
 
     const handleAlt = (e) => {
         setAlt(e.target.value);
+        console.log(userData);
     }
 
     const handlePicture = (e) => {
@@ -25,6 +26,9 @@ const ProfilePicPage = () => {
     }
     
     useEffect(() => {
+        //console.log('Userdata id: ', userData.user.id);
+        //console.log('Userdata image: ' , userData.user.image);
+        //console.log('Userdata username: ', userData.user.user);
         setPic(picLink)
         setAlt(altText)
     }, [picLink, altText])
@@ -46,19 +50,26 @@ const ProfilePicPage = () => {
             console.log('newUserImage:', newUserImage);
             let linkToUpdate = 'http://localhost:8084/api/users/' + userData.user.id;
             console.log(linkToUpdate);
+            let userInfo = {
+                ...userData
+            }
             const response = axios.put(linkToUpdate, newUserImage)
             .then((response) => {
+                // console.log('Response data after calling put for the user: ', response.data)
                 setUserData({
-                    token: userData.token,
-                    user: response.data.user,
-            })
-            console.log("userData image set");
+                   token: userData.token,
+                   user: newUserImage
+                })
+                console.log('userData ', userData);
             }).catch((err) => {
                 console.log("Update failed: " + err.message);
             });
+
+            
         } catch (err) {
             console.log('Update Failed:', err.message);
         }
+        console.log('userdata outside of response ', userData);
 
     }
 
