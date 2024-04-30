@@ -17,7 +17,7 @@ const EditChatPage = (props) => {
     const { chatData, setChatData } = useContext(ChatContext);
     const { userData, setUserData } = useContext(UserContext);
     //console.log('INSIDE OF EDIT PAGE CHAT DATA: ', chatData);
-    console.log('chatData looks like this!: ', chatData);
+    // console.log('chatData looks like this!: ', chatData);
     const messageToUse = 'http://localhost:8084/api/chats/' + chatData.id
     // console.log(messageToUse);
     const [editMessage, setMessage] = useState(''); // new
@@ -82,7 +82,7 @@ const EditChatPage = (props) => {
         e.preventDefault();
         try {
             let linkToUpdate = 'http://localhost:8084/api/chats/' + chatData.id;
-            console.log(linkToUpdate);
+            // console.log(linkToUpdate);
             
             /*const responseOne = axios.get(linkToUpdate).then((response) => {
                 console.log(response.data);
@@ -92,9 +92,9 @@ const EditChatPage = (props) => {
             */
             axios.get(messageToUse)
             .then((response) => {
-                console.log('response: ', response.data);
+                //console.log('response: ', response.data);
                 setChat(response.data);
-                console.log('original chat after setChat: ', originalChat);
+                // console.log('original chat after setChat: ', originalChat);
             }).catch((response) => {
                 console.log(response);
             });
@@ -104,18 +104,21 @@ const EditChatPage = (props) => {
                 chatContent: editMessage,
             }
             setMessage('');
-            console.log('Updating chat with...', newChatMessage);
+            // console.log('Updating chat with...', newChatMessage);
 
             const response = axios.put(linkToUpdate, newChatMessage)
             .then((response) => {
-                console.log('response in the .put ', response);
+                // console.log('response in the .put ', response);
                 console.log("Message updated successfully.");
-                // router.push('/gameplay')
+                alert("Saved! You can now go to the GamePage!");
+                
             
             }).catch((err) => {
                 console.log("Message not updated.");
                 console.log("Update failed: " + err.message);
             });
+            // setTimeout(5000);
+            // router.push('/gameplay');
         } catch (err) {
             console.log('Update Failed:', err.message);
         }

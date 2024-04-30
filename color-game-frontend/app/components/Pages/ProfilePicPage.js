@@ -7,9 +7,13 @@ import axios from 'axios';
 import Button from "../Button";
 import UserContext from '../../context/UserContext';
 import ProfilePicButton from '../ProfilePicButton';
+import { useRouter } from 'next/navigation';
 import "./Page.css";
 
 const ProfilePicPage = () => {
+
+    const router = useRouter();
+
     const { userData, setUserData } = useContext(UserContext);
 
     const [picLink, setPic] = useState('');
@@ -35,11 +39,11 @@ const ProfilePicPage = () => {
     
 
     const handleChange = async (e) => {
-        console.log('Userdata id: ', userData.user.id);
+        // console.log('Userdata id: ', userData.user.id);
         //console.log('Userdata image: ' , userData.user.image);
         //console.log('Userdata username: ', userData.user.user);
         e.preventDefault();
-        console.log("PicLink: " + picLink);
+        // console.log("PicLink: " + picLink);
         try {
             let newUserImage = {
                 ...userData.user,
@@ -47,9 +51,9 @@ const ProfilePicPage = () => {
             }
             setPic('');
             console.log("Updating image...");
-            console.log('newUserImage:', newUserImage);
+            //console.log('newUserImage:', newUserImage);
             let linkToUpdate = 'http://localhost:8084/api/users/' + userData.user.id;
-            console.log(linkToUpdate);
+            //console.log(linkToUpdate);
             let userInfo = {
                 ...userData
             }
@@ -60,16 +64,20 @@ const ProfilePicPage = () => {
                    token: userData.token,
                    user: newUserImage
                 })
-                console.log('userData ', userData);
+                alert("Saved! You can now go to the GamePage!");
+                // console.log('userData ', userData);
             }).catch((err) => {
                 console.log("Update failed: " + err.message);
             });
-
+            //console.log('userdata outside of response ', userData);
+            // setTimeout(5000);
+            // router.push('/gameplay');
+            
             
         } catch (err) {
             console.log('Update Failed:', err.message);
         }
-        console.log('userdata outside of response ', userData);
+
 
     }
 
