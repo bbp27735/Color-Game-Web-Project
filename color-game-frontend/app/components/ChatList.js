@@ -8,7 +8,7 @@ import AddChat from "./AddChat"
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
-const ChatList = (props) => {
+const ChatList = () => {
 
 
 
@@ -24,6 +24,7 @@ const ChatList = (props) => {
 
     useEffect(() => {
         // Fetch chat data from the API
+        setUserData(userData);
         axios.get('http://localhost:8084/api/chats')
             .then(function (response) {
                 const jsonData = response.data;
@@ -40,17 +41,22 @@ const ChatList = (props) => {
             .catch(function (error) {
                 console.log(error);
             });
-    }, [chats]);
+    }, [chats, userData]);
 
-    const handleEditChat = (chatID) => {
-        setChatData(chatID);
+    const handleEditChat = (chatID, chatMessage) => {
+        console.log("Edit Chat clicked!")
+        let chatDataToBe = {
+            id: chatID,
+            message: chatMessage,
+        }
+        setChatData(chatDataToBe);
         router.push('/editpage');
     }
 
     const handleChats = (enteredChatData) => {
-        // console.log('Userdata ID:', userData.user.id);
+        //console.log('Userdata ID:', userData.user.id);
         // console.log('Userdata username:', userData.user.username);
-        const chatData = {
+        const chatDataToAdd = {
         ...enteredChatData,
         //id : Math.random().toString(),
         }
@@ -59,9 +65,9 @@ const ChatList = (props) => {
         //   setChats([...chats, chatData])
         // }        
         
-        if (chatData.username !== '' && chatData.message !== '') {
+        if (chatDataToAdd.username !== '' && chatDataToAdd.message !== '') {
             // Create a new array with the new chat data and the current chats
-            let updatedChats = [chatData, ...chats];
+            let updatedChats = [chatDataToAdd, ...chats];
     
             // Remove oldest chat if chats array length exceeds 5
             if (updatedChats.length > 5) {
@@ -75,10 +81,11 @@ const ChatList = (props) => {
         }
 
         // Send the chat data to the API
+        //console.log(chatDataToAdd.message);
+        console.log(chatDataToAdd.image);
+        console.log(userData.user.image);
         axios.post('http://localhost:8084/api/chats/add', {
-            username: chatData.username,
-            chatContent: chatData.message,
-            image: chatData.image
+            ...enteredChatData
         })
             .then(function (response) {
                 console.log("Trying post");
@@ -118,7 +125,7 @@ const ChatList = (props) => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id, chat.message)} />
             )}
                 
         </div>

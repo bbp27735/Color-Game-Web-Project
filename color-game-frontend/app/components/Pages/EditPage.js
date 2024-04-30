@@ -17,34 +17,63 @@ const EditChatPage = (props) => {
     const { chatData, setChatData } = useContext(ChatContext);
     const { userData, setUserData } = useContext(UserContext);
     //console.log('INSIDE OF EDIT PAGE CHAT DATA: ', chatData);
-    //console.log(chatData);
-    const messageToUse = 'http://localhost:8084/api/chats/' + chatData
-    //console.log(messageToUse);
-    const [fullChat, setFullChat] = useState('');
+    console.log('chatData looks like this!: ', chatData);
+    const messageToUse = 'http://localhost:8084/api/chats/' + chatData.id
+    // console.log(messageToUse);
+    const [editMessage, setMessage] = useState(''); // new
+
+    const [ originalChat, setChat ] = useState({ // original
+        _id: chatData.id, 
+        username: undefined, 
+        chatContent: chatData.message, 
+        image: undefined,
+    });
+    /*
     axios.get(messageToUse)
     .then((response) => {
-        setFullChat(response.data);
+        console.log(response);
+        originalChat = (response.data);
     }).catch((response) => {
         alert("Message not found! Returning to gameplay...");
         router.push('/gameplay');
     });
+    */
 
-    const [editMessage, setMessage] = useState('');
+    
 
     
     
     const handleMessage = (e) => {
-
         setMessage(e.target.value);
+        /*
+        axios.get(messageToUse)
+        .then((response) => {
+            console.log('response in useEffect: ', response);
+            setChat(response.data);
+            console.log('original chat in useEffect: ', originalChat);
+        }).catch((response) => {
+            console.log(response);
+        });
+        */
     }
     
     /*
     useEffect(() => {
-        console.log(fullChat);
+        axios.get(messageToUse)
+        .then((response) => {
+            console.log('response in useEffect: ', response);
+            setChat(response.data);
+            console.log('original chat in useEffect: ', originalChat);
+        }).catch((response) => {
+            console.log(response);
+        });
+        console.log(originalChat);
         setMessage(editMessage);
 
     }, [editMessage])
     */
+    
+    
     
     
 
@@ -52,21 +81,39 @@ const EditChatPage = (props) => {
         
         e.preventDefault();
         try {
+            let linkToUpdate = 'http://localhost:8084/api/chats/' + chatData.id;
+            console.log(linkToUpdate);
+            
+            /*const responseOne = axios.get(linkToUpdate).then((response) => {
+                console.log(response.data);
+                console.log(response);
+                setChat()
+            })
+            */
+            axios.get(messageToUse)
+            .then((response) => {
+                console.log('response: ', response.data);
+                setChat(response.data);
+                console.log('original chat after setChat: ', originalChat);
+            }).catch((response) => {
+                console.log(response);
+            });
+           
             let newChatMessage = {
-                ...fullChat,
+                ...originalChat,
                 chatContent: editMessage,
             }
             setMessage('');
-            console.log("Updating chat...");
-            let linkToUpdate = 'http://localhost:8084/api/chats/' + chatData;
-            console.log(linkToUpdate);
+            console.log('Updating chat with...', newChatMessage);
+
             const response = axios.put(linkToUpdate, newChatMessage)
             .then((response) => {
+                console.log('response in the .put ', response);
                 console.log("Message updated successfully.");
-                router.push('/gameplay')
+                // router.push('/gameplay')
             
             }).catch((err) => {
-                alert("Message not updated.");
+                console.log("Message not updated.");
                 console.log("Update failed: " + err.message);
             });
         } catch (err) {
@@ -84,8 +131,7 @@ const EditChatPage = (props) => {
             <div>
                     <Card className="input">
                         <h1>Enter the new message</h1>
-                        <h2>Current Message:</h2>
-                        <h2>{fullChat.chatContent}</h2>
+                        <h3 className="colourbutBritish">Old message: {originalChat.chatContent}</h3>
                     <form onSubmit={handleChange}>
                         <label>New Message</label>
                         <input
