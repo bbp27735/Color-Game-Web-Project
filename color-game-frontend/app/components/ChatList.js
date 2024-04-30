@@ -43,9 +43,13 @@ const ChatList = () => {
             });
     }, [chats, userData]);
 
-    const handleEditChat = (chatID) => {
+    const handleEditChat = (chatID, chatMessage) => {
         console.log("Edit Chat clicked!")
-        setChatData(chatID);
+        let chatDataToBe = {
+            id: chatID,
+            message: chatMessage,
+        }
+        setChatData(chatDataToBe);
         router.push('/editpage');
     }
 
@@ -121,7 +125,7 @@ const ChatList = () => {
         <div className="chatDiv">
         <div className="chat-ul">
             {chats.map((chat) => 
-                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id)} />
+                <Chat key={chat.id} image ={chat.image} username={chat.username} message={chat.message} onDelete={() => handleDeleteChat(chat.id)} onEdit={() => handleEditChat(chat.id, chat.message)} />
             )}
                 
         </div>

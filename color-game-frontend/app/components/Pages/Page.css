@@ -8,6 +8,10 @@ body {
 	font-weight: bold;
 }
 
+.colourbutBritish {
+	color: #000000;
+}
+
 #link_to_login_signup {
 	color: white;
 	display: block;
